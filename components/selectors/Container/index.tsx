@@ -23,6 +23,7 @@ export type ContainerProps = {
   children: React.ReactNode;
   radius: number;
   className?: string;
+  gap?: number;
 };
 
 const defaultProps = {
@@ -32,7 +33,7 @@ const defaultProps = {
   fillSpace: "no",
   padding: ["0", "0", "0", "0"],
   margin: ["0", "0", "0", "0"],
-
+  gap: 0,
   background: { r: 255, g: 255, b: 255, a: 1 },
   color: { r: 0, g: 0, b: 0, a: 1 },
   shadow: 0,
@@ -58,12 +59,15 @@ export const Container = (props: Partial<ContainerProps>) => {
     shadow,
     radius,
     children,
+    gap,
   } = props;
   return (
     <Resizer
       propKey={{ width: "width", height: "height" }}
       className={props.className}
       style={{
+        gap,
+        display: "flex",
         justifyContent,
         flexDirection,
         alignItems,

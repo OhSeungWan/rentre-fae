@@ -1,10 +1,10 @@
-import { useEditor } from '@craftjs/core';
-import cx from 'classnames';
-import React, { useEffect } from 'react';
+import { useEditor } from "@craftjs/core";
+import cx from "classnames";
+import React, { useEffect } from "react";
 
-import { Header } from './Header';
-import { Sidebar } from './Sidebar';
-import { Toolbox } from './Toolbox';
+import { Header } from "./Header";
+import { Sidebar } from "./Sidebar";
+import { Toolbox } from "./Toolbox";
 
 export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
   children,
@@ -28,7 +28,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
         {
           LANDING_PAGE_LOADED: true,
         },
-        '*'
+        "*"
       );
 
       setTimeout(() => {
@@ -42,17 +42,15 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
   return (
     <div className="viewport">
       <div
-        className={cx(['flex h-full overflow-hidden flex-row w-full fixed'])}
+        className={cx(["flex h-full overflow-hidden flex-row w-full fixed"])}
       >
         <Toolbox />
         <div className="page-container flex flex-1 h-full flex-col">
           <Header />
           <div
             className={cx([
-              'craftjs-renderer flex-1 h-full w-full transition pb-8 overflow-auto',
-              {
-                'bg-renderer-gray': enabled,
-              },
+              "craftjs-renderer flex-1 h-full w-full transition pb-8 overflow-auto",
+              { "bg-renderer-gray": enabled },
             ])}
             ref={(ref) => {
               connectors.select(connectors.hover(ref, null), null);

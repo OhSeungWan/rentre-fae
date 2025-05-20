@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { ToolbarSection, ToolbarItem } from '../../editor';
-import { ToolbarRadio } from '../../editor/Toolbar/ToolbarRadio';
+import { ToolbarSection, ToolbarItem } from "../../editor";
+import { ToolbarRadio } from "../../editor/Toolbar/ToolbarRadio";
 
 export const ContainerSettings = () => {
   return (
     <React.Fragment>
       <ToolbarSection
         title="Dimensions"
-        props={['width', 'height']}
+        props={["width", "height"]}
         summary={({ width, height }: any) => {
           return `${width || 0} x ${height || 0}`;
         }}
@@ -18,7 +18,7 @@ export const ContainerSettings = () => {
       </ToolbarSection>
       <ToolbarSection
         title="Colors"
-        props={['background', 'color']}
+        props={["background", "color"]}
         summary={({ background, color }: any) => {
           return (
             <div className="flex flex-row-reverse">
@@ -51,8 +51,18 @@ export const ContainerSettings = () => {
         <ToolbarItem full={true} propKey="color" type="color" label="Text" />
       </ToolbarSection>
       <ToolbarSection
+        title="Gap"
+        props={["gap"]}
+        summary={({ gap }: any) => {
+          return `gap: ${gap || 0}`;
+        }}
+      >
+        <ToolbarItem propKey="gap" type="text" label="gap" />
+        {/* <ToolbarItem propKey="gapX" type="text" label="X" /> */}
+      </ToolbarSection>
+      <ToolbarSection
         title="Margin"
-        props={['margin']}
+        props={["margin"]}
         summary={({ margin }: any) => {
           return `${margin[0] || 0}px ${margin[1] || 0}px ${margin[2] || 0}px ${
             margin[3] || 0
@@ -66,7 +76,7 @@ export const ContainerSettings = () => {
       </ToolbarSection>
       <ToolbarSection
         title="Padding"
-        props={['padding']}
+        props={["padding"]}
         summary={({ padding }: any) => {
           return `${padding[0] || 0}px ${padding[1] || 0}px ${
             padding[2] || 0
@@ -78,7 +88,7 @@ export const ContainerSettings = () => {
         <ToolbarItem propKey="padding" index={2} type="slider" label="Bottom" />
         <ToolbarItem propKey="padding" index={3} type="slider" label="Left" />
       </ToolbarSection>
-      <ToolbarSection title="Decoration" props={['radius', 'shadow']}>
+      <ToolbarSection title="Decoration" props={["radius", "shadow"]}>
         <ToolbarItem
           full={true}
           propKey="radius"
