@@ -1,4 +1,5 @@
 import { useEditor } from "@craftjs/core";
+import { Tooltip } from "@mui/material";
 // import { Tooltip } from "@mui/material";
 import cx from "classnames";
 import React from "react";
@@ -52,29 +53,37 @@ const Item = styled.a<{ disabled?: boolean }>`
 `;
 
 export const Header = () => {
-  const { enabled, canUndo, canRedo, actions } = useEditor((state, query) => ({
-    enabled: state.options.enabled,
-    canUndo: query.history.canUndo(),
-    canRedo: query.history.canRedo(),
-  }));
+  const { enabled, canUndo, canRedo, actions, query } = useEditor(
+    (state, query) => ({
+      enabled: state.options.enabled,
+      canUndo: query.history.canUndo(),
+      canRedo: query.history.canRedo(),
+    })
+  );
+
+  const handleExport = () => {
+    const json = query.serialize();
+    console.log(json);
+    // 서버 API 전송, 파일 저장 등
+  };
 
   return (
     <HeaderDiv className="header text-white transition w-full">
       <div className="items-center flex w-full px-4 justify-end">
-        {/* {enabled && (
+        {enabled && (
           <div className="flex-1 flex">
             <Tooltip title="Undo" placement="bottom">
               <Item disabled={!canUndo} onClick={() => actions.history.undo()}>
-                <UndoSvg />
+                {"<"}
               </Item>
             </Tooltip>
             <Tooltip title="Redo" placement="bottom">
               <Item disabled={!canRedo} onClick={() => actions.history.redo()}>
-                <RedoSvg />
+                {">"}
               </Item>
             </Tooltip>
           </div>
-        )} */}
+        )}
         <div className="flex">
           <Btn
             className={cx([
@@ -95,6 +104,17 @@ export const Header = () => {
             )} */}
             {enabled ? "Finish Editing" : "Edit"}
           </Btn>
+          {enabled && (
+            <Btn
+              className={cx([
+                "transition cursor-pointer",
+                { "bg-green-400": enabled, "bg-primary": !enabled },
+              ])}
+              onClick={handleExport}
+            >
+              export
+            </Btn>
+          )}
         </div>
       </div>
     </HeaderDiv>
