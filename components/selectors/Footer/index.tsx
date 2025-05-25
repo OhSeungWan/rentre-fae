@@ -3,7 +3,7 @@ import { UserComponent, useNode } from "@craftjs/core";
 // import { EditorKeywordCard } from "@pages/story-pages/ui/EditorKeywordCard";
 
 import { FooterSettings } from "./FooterSettings";
-import { BottomCtaBtn } from "../BottomCtaButton";
+import { BottomCtaButton } from "../BottomCtaButton";
 import { StoryList } from "../StoryList";
 
 type FooterProps = {
@@ -54,7 +54,7 @@ export const Footer: UserComponent<FooterProps> = ({
           </div>
         )}
       </div>
-      {cta && <BottomCtaBtn {...cta} />}
+      {cta && <BottomCtaButton {...cta} />}
     </footer>
   );
 };

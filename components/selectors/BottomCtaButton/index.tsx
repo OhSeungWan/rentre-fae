@@ -10,7 +10,7 @@ type BottomCtaBtnProps = {
   buttonText?: string;
 };
 
-export const BottomCtaBtn: UserComponent<BottomCtaBtnProps> = ({
+export const BottomCtaButton: UserComponent<BottomCtaBtnProps> = ({
   url = "",
   buttonText = "CTA",
 }) => {
@@ -41,7 +41,7 @@ export const BottomCtaBtn: UserComponent<BottomCtaBtnProps> = ({
   );
 };
 
-BottomCtaBtn.craft = {
+BottomCtaButton.craft = {
   displayName: "BottomCtaBtn",
   props: {
     url: "/",

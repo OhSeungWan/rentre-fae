@@ -15,10 +15,11 @@ import { BgSection } from "components/selectors/BgSection";
 import { CardList } from "components/selectors/CardList";
 import { StoryItem } from "components/selectors/StoryItem";
 import { StoryList } from "components/selectors/StoryList";
-import { BottomCtaBtn } from "components/selectors/BottomCtaButton";
+import { BottomCtaButton } from "components/selectors/BottomCtaButton";
 import { Footer } from "components/selectors/Footer";
 import { SectionTitle } from "components/selectors/SectionTitle";
 import { CardItem } from "components/selectors/CardItem";
+import { ComponentsMap } from "components/registry/ComponentsMap";
 
 const theme = createTheme({
   typography: {
@@ -45,31 +46,7 @@ function App() {
             cardType: 'summary_large_image',
           }}
         /> */}
-        <Editor
-          resolver={{
-            SectionTitle,
-            CardList,
-            CardItem,
-            BgSection,
-            StoryItem,
-            StoryList,
-            BottomCtaBtn,
-            Footer,
-            Container,
-            Text,
-            Custom1,
-            Custom2,
-            Custom2VideoDrop,
-            Custom3,
-            Custom3BtnDrop,
-            OnlyButtons,
-            ArticleTitle,
-            Button,
-            Video,
-          }}
-          enabled={false}
-          onRender={RenderNode}
-        >
+        <Editor resolver={ComponentsMap} enabled={false} onRender={RenderNode}>
           <Viewport>
             <Frame>
               <Element
