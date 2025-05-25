@@ -1,24 +1,9 @@
 import { Editor, Frame, Element } from "@craftjs/core";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { NextSeo } from "next-seo";
 import React from "react";
 
 import { Viewport, RenderNode } from "../components/editor";
 import { Container, Text } from "../components/selectors";
-import { Button } from "../components/selectors/Button";
-import { Custom1, OnlyButtons } from "../components/selectors/Custom1";
-import { Custom2, Custom2VideoDrop } from "../components/selectors/Custom2";
-import { Custom3, Custom3BtnDrop } from "../components/selectors/Custom3";
-import { Video } from "../components/selectors/Video";
-import { ArticleTitle } from "components/selectors/ArticleTitle";
-import { BgSection } from "components/selectors/BgSection";
-import { CardList } from "components/selectors/CardList";
-import { StoryItem } from "components/selectors/StoryItem";
-import { StoryList } from "components/selectors/StoryList";
-import { BottomCtaButton } from "components/selectors/BottomCtaButton";
-import { Footer } from "components/selectors/Footer";
-import { SectionTitle } from "components/selectors/SectionTitle";
-import { CardItem } from "components/selectors/CardItem";
 import { ComponentsMap } from "components/registry/ComponentsMap";
 
 const theme = createTheme({
