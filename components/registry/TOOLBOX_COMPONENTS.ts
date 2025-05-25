@@ -68,28 +68,9 @@ export const TOOLBOX_COMPONENTS = [
     category: "Misc",
     icon: "📦",
     defaultProps: {},
+    isCanvas: true,
   },
-  {
-    name: "Custom1",
-    label: "Custom1",
-    category: "Misc",
-    icon: "📦",
-    defaultProps: {},
-  },
-  {
-    name: "Custom2",
-    label: "Custom2",
-    category: "Misc",
-    icon: "📦",
-    defaultProps: {},
-  },
-  {
-    name: "Custom3",
-    label: "Custom3",
-    category: "Misc",
-    icon: "📦",
-    defaultProps: {},
-  },
+
   {
     name: "Footer",
     label: "Footer",
