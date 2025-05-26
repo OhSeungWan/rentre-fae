@@ -2,7 +2,7 @@ export const TOOLBOX_COMPONENTS = [
   {
     name: "ArticleTitle",
     label: "ArticleTitle",
-    category: "Misc",
+    category: "Title",
     icon: "📦",
     defaultProps: {},
   },

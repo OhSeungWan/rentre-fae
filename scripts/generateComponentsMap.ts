@@ -1,7 +1,8 @@
-// scripts/generateComponentsMap.ts
+// @ts-ignore
 const fs = require("fs");
+// @ts-ignore
 const path = require("path");
-
+// @ts-ignore
 const SELECTORS_DIR = path.resolve(__dirname, "../components/selectors");
 const OUTPUT_FILE = path.resolve(
   __dirname,
@@ -12,6 +13,7 @@ function pascalCase(name: string) {
   return name.replace(/(^\w|-\w)/g, (m) => m.replace(/-/, "").toUpperCase());
 }
 
+// @ts-ignore
 function getComponentFiles(dirPath: string) {
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 

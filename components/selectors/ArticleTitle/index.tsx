@@ -8,7 +8,9 @@ type ArticleTitleProps = {
   subTitleTextSize?: string;
 };
 
-export const ArticleTitle: UserComponent<ArticleTitleProps> = ({
+export const ArticleTitle: UserComponent<ArticleTitleProps> & {
+  meta: Record<string, any>;
+} = ({
   title = "ArticleTitle",
   subTitle = "ArticleSubTitle",
   subTitleTextSize = "text-[20px]",
@@ -56,7 +58,12 @@ ArticleTitle.craft = {
     subText: "여기에 추가 설명을 입력하세요",
     subTitleTextSize: "text-[20px]",
   },
+  custom: { category: "Title" },
   related: {
     toolbar: ArticleTitleSettings,
   },
+};
+
+ArticleTitle.meta = {
+  category: "Title",
 };

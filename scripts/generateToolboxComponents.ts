@@ -1,9 +1,11 @@
 const babel = require("@babel/core");
 const parser = require("@babel/parser");
 const traverse = require("@babel/traverse").default;
+// @ts-ignore
 const fs = require("fs");
+// @ts-ignore
 const path = require("path");
-
+// @ts-ignore
 const SELECTORS_DIR = path.resolve(__dirname, "../components/selectors");
 
 function extractMetaFromFile(filePath: string) {
@@ -37,14 +39,20 @@ function extractMetaFromFile(filePath: string) {
         result.meta = eval(
           `(${
             babel
-              .transformSync(code)
+              .transformSync(code, {
+                filename: filePath, // ← so Babel knows it’s “.tsx”
+                parserOpts: {
+                  sourceType: "module",
+                  plugins: ["typescript", "jsx"], // ← enable TS + JSX
+                },
+              })
               ?.code?.match(/\.meta\s*=\s*(\{[\s\S]*?\})/)?.[1]
           })`
         );
       }
     },
   });
-
+  console.log(result);
   return {
     name: exportName,
     label: result.meta?.label || exportName,
@@ -54,6 +62,7 @@ function extractMetaFromFile(filePath: string) {
   };
 }
 
+// @ts-ignore
 function getComponentFiles(dirPath) {
   const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
@@ -72,6 +81,7 @@ function getComponentFiles(dirPath) {
     .filter(Boolean); // remove null
 }
 
+// @ts-ignore
 function main() {
   const files = getComponentFiles(SELECTORS_DIR);
 

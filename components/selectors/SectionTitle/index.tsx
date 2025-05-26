@@ -53,6 +53,7 @@ SectionTitle.craft = {
     subTitle: "비데를 고를 때는 방수등급, 노즐 소재, 살균 기능을 확인해주세요!",
     backgroundColor: "#e7ebfe",
   },
+  custom: { category: "title" },
   related: {
     toolbar: SectionTitleSettings,
   },

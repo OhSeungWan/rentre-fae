@@ -98,3 +98,7 @@ Container.craft = {
     toolbar: ContainerSettings,
   },
 };
+
+Container.meta = {
+  category: "Layout",
+};

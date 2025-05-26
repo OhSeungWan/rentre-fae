@@ -2,9 +2,12 @@
   "name": "example-landing",
   "version": "0.2.0",
   "scripts": {
-    "start": "next dev -p 3001",
+    "start": "next dev -p 3003",
     "build": "next build",
-    "clean": "rimraf lib .next out dist"
+    "clean": "rimraf lib .next out dist",
+    "generate:components": "npx ts-node scripts/generateComponentsMap.ts",
+    "generate:toolbox": "npx ts-node scripts/generateToolboxComponents.ts",
+    "generate:all": "npm run generate:toolbox && npm run generate:components"
   },
   "dependencies": {
     "@craftjs/core": "^0.2.12",
@@ -41,6 +44,8 @@
   },
   "devDependencies": {
     "@babel/core": "7.7.5",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@fullhuman/postcss-purgecss": "1.3.0",
     "@types/classnames": "2.2.9",
     "@types/node": "12.12.5",
@@ -53,6 +58,6 @@
     "postcss-preset-env": "6.7.0",
     "tailwindcss": "3.4.17",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   }
 }

@@ -5,7 +5,6 @@ import { Tooltip } from "@mui/material";
 import { ComponentsMap } from "components/registry/ComponentsMap";
 import React from "react";
 import { TOOLBOX_COMPONENTS } from "components/registry/TOOLBOX_COMPONENTS";
-import { Container } from "components/selectors";
 
 export const Toolbox = () => {
   const {
@@ -24,7 +23,7 @@ export const Toolbox = () => {
     <div className="min-w-[400px] bg-white border-r h-full">
       <Tabs defaultValue="All" onValueChange={setActiveCategory}>
         <TabsList className="grid grid-cols-4">
-          {["All", "Content", "Media", "Footer"].map((tab) => (
+          {["All", "Table", "Layout", "Media", "Title"].map((tab) => (
             <TabsTrigger key={tab} value={tab}>
               {tab}
             </TabsTrigger>
