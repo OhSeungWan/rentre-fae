@@ -61,10 +61,22 @@ export const Header = () => {
     })
   );
 
-  const handleExport = () => {
-    const json = query.serialize();
-    console.log(json);
-    // 서버 API 전송, 파일 저장 등
+  const handlePublish = async () => {
+    const slug = prompt("퍼블리싱될 슬러그를 입력하세요"); // 예: "air-purifier-1"
+    const editorState = query.serialize();
+
+    const res = await fetch("/api/publish", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ slug, data: editorState }),
+    });
+
+    const json = await res.json();
+    if (res.ok) {
+      alert(`PR 생성 완료!\n${json.prUrl}`);
+    } else {
+      alert(`오류 발생: ${json.error}`);
+    }
   };
 
   return (
@@ -84,7 +96,7 @@ export const Header = () => {
             </Tooltip>
           </div>
         )}
-        <div className="flex">
+        <div className="flex gap-16">
           <Btn
             className={cx([
               "transition cursor-pointer",
@@ -102,17 +114,17 @@ export const Header = () => {
             ) : (
               <Customize viewBox="2 0 16 16" />
             )} */}
-            {enabled ? "Finish Editing" : "Edit"}
+            {enabled ? "편집 완료하기" : "편집 계속하기"}
           </Btn>
-          {enabled && (
+          {!enabled && (
             <Btn
               className={cx([
                 "transition cursor-pointer",
                 { "bg-green-400": enabled, "bg-primary": !enabled },
               ])}
-              onClick={handleExport}
+              onClick={handlePublish}
             >
-              export
+              개발자 검수 요청
             </Btn>
           )}
         </div>

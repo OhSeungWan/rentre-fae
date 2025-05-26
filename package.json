@@ -24,6 +24,7 @@
     "lzutf8": "0.5.5",
     "next": "15.1.6",
     "next-seo": "6.6.0",
+    "octokit": "^5.0.2",
     "postcss": "latest",
     "re-resizable": "6.10.3",
     "react": "19.0.0",

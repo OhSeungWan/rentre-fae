@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { useEditor } from "@craftjs/core";
+import { Element, useEditor } from "@craftjs/core";
 import { Tooltip } from "@mui/material";
 import { ComponentsMap } from "components/registry/ComponentsMap";
 import React from "react";
 import { TOOLBOX_COMPONENTS } from "components/registry/TOOLBOX_COMPONENTS";
+import { Container } from "components/selectors";
 
 export const Toolbox = () => {
   const {
@@ -31,6 +32,26 @@ export const Toolbox = () => {
         </TabsList>
         <TabsContent value={activeCategory}>
           <div className="grid grid-cols-2 gap-4 p-4">
+            <div
+              ref={(ref) => {
+                create(
+                  ref,
+                  <Element
+                    canvas
+                    is={Container}
+                    background={{ r: 78, g: 78, b: 78, a: 1 }}
+                    color={{ r: 0, g: 0, b: 0, a: 1 }}
+                    height="300px"
+                    width="300px"
+                  ></Element>
+                );
+              }}
+            >
+              <Tooltip title={"container"}>
+                <div className="text-2xl">🫙</div>
+              </Tooltip>
+              <span className="text-xs mt-1 text-gray-600">container</span>
+            </div>
             {filtered.map((item) => (
               <div
                 key={item.name}

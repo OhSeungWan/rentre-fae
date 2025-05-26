@@ -21,13 +21,11 @@ export const ComponentsMap = {
   BottomCtaButton,
   Button,
   CardItem,
-
   CardList,
   ComparisonTable,
   ComparisonTableHeader,
   ComparisonTableRow,
   Container,
-
   Footer,
   SectionTitle,
   StoryItem,

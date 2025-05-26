@@ -31,7 +31,11 @@ function App() {
             cardType: 'summary_large_image',
           }}
         /> */}
-        <Editor resolver={ComponentsMap} enabled={false} onRender={RenderNode}>
+        <Editor
+          resolver={{ ...ComponentsMap }}
+          enabled={false}
+          onRender={RenderNode}
+        >
           <Viewport>
             <Frame>
               <Element
