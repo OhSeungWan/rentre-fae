@@ -1,5 +1,7 @@
-import { UserComponent, useNode } from "@craftjs/core";
+import { Element, UserComponent, useNode } from "@craftjs/core";
 import ArticleTitleSettings from "./ArticleTitleSettings";
+import { Container } from "../Container";
+import { Text } from "../Text";
 
 type ArticleTitleProps = {
   title?: string;
@@ -22,6 +24,7 @@ export const ArticleTitle: UserComponent<ArticleTitleProps> & {
 
   return (
     <div
+      className="flex flex-col items-center justify-center gap-[10px] self-stretch px-[24px] py-0"
       ref={(dom: HTMLDivElement | null) => {
         if (dom) {
           connect(dom);
@@ -29,21 +32,55 @@ export const ArticleTitle: UserComponent<ArticleTitleProps> & {
       }}
     >
       <header className="flex flex-col items-center justify-center gap-[10px] self-stretch px-[24px] py-0">
-        <h1 className="self-stretch whitespace-pre-line text-center text-[32px] font-bold leading-[38px] text-[#2c2c2c]">
-          {title}
-        </h1>
-        {subTitle && (
-          <h3
-            className={`text-[#2c2c2c] w-full whitespace-pre-line text-center leading-[28px] tracking-[-0.01em] ${subTitleTextSize}`}
-          >
-            {subTitle}
-          </h3>
-        )}
-        {subText && (
-          <p className="w-full whitespace-pre-line text-center text-[18px] leading-[24px] text-[#2c2c2c]">
-            {subText}
-          </p>
-        )}
+        <Element
+          is={Text}
+          id="title"
+          canvas
+          text={title}
+          fontSize="32"
+          textAlign="center"
+          fontWeight="700"
+          tagName="h1"
+          color={{ r: "44", g: "44", b: "44", a: "1" }}
+          margin={["0", "0", "0", "0"]}
+        />
+        <Element
+          is={Text}
+          id="subTitle"
+          canvas
+          text={subTitle}
+          fontSize={subTitleTextSize.replace(/[^0-9]/g, "")}
+          textAlign="center"
+          fontWeight="500"
+          tagName="h3"
+          color={{ r: "44", g: "44", b: "44", a: "1" }}
+          margin={["0", "0", "0", "0"]}
+        />
+
+        {/* {subTitle && (
+            <h3
+              className={`text-[#2c2c2c] w-full whitespace-pre-line text-center leading-[28px] tracking-[-0.01em] ${subTitleTextSize}`}
+            >
+              {subTitle}
+            </h3>
+          )} */}
+        {/* {subText && (
+            <p className="w-full whitespace-pre-line text-center text-[18px] leading-[24px] text-[#2c2c2c]">
+              {subText}
+            </p>
+          )} */}
+        <Element
+          is={Text}
+          id="subText"
+          canvas
+          text={subText}
+          fontSize="18"
+          textAlign="center"
+          fontWeight="400"
+          tagName="p"
+          color={{ r: "44", g: "44", b: "44", a: "1" }}
+          margin={["0", "0", "0", "0"]}
+        />
       </header>
       <hr className="mx-auto w-[100px] border-t border-[#B1B9CC]" />
     </div>

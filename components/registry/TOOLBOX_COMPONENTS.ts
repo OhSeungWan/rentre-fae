@@ -65,7 +65,7 @@ export const TOOLBOX_COMPONENTS = [
   {
     name: "Container",
     label: "Container",
-    category: "Misc",
+    category: "Layout",
     icon: "📦",
     defaultProps: {},
   },

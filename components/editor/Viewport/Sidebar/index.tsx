@@ -28,7 +28,7 @@ export const Sidebar = () => {
       <div className="flex flex-col h-full">
         <SidebarItem
           icon={"CustomizeIcon"}
-          title="Customize"
+          title="속성 편집"
           height={!layersVisible ? "full" : "55%"}
           visible={toolbarVisible}
           onChange={(val) => setToolbarVisible(val)}
@@ -38,7 +38,7 @@ export const Sidebar = () => {
         </SidebarItem>
         <SidebarItem
           icon={"LayerIcon"}
-          title="Layers"
+          title="레이어"
           height={!toolbarVisible ? "full" : "45%"}
           visible={layersVisible}
           onChange={(val) => setLayerVisible(val)}

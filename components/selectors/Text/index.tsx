@@ -12,6 +12,7 @@ export type TextProps = {
   shadow: number;
   text: string;
   margin: [string, string, string, string];
+  tagName?: string;
 };
 
 export const Text = ({
@@ -22,6 +23,7 @@ export const Text = ({
   shadow,
   text,
   margin,
+  tagName = "h2",
 }: Partial<TextProps>) => {
   const {
     connectors: { connect },
@@ -38,7 +40,7 @@ export const Text = ({
       onChange={(e) => {
         setProp((prop) => (prop.text = e.target.value), 500);
       }} // use true to disable editing
-      tagName="h2" // Use a custom HTML tag (uses a div by default)
+      tagName={tagName} // Use a custom HTML tag (uses a div by default)
       style={{
         width: "100%",
         margin: `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`,
