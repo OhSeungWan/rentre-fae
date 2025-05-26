@@ -32,40 +32,23 @@ export const Toolbox = () => {
         </TabsList>
         <TabsContent value={activeCategory}>
           <div className="grid grid-cols-2 gap-4 p-4">
-            <div
-              ref={(ref) => {
-                create(
-                  ref,
-                  <Element
-                    canvas
-                    is={Container}
-                    background={{ r: 78, g: 78, b: 78, a: 1 }}
-                    color={{ r: 0, g: 0, b: 0, a: 1 }}
-                    height="300px"
-                    width="300px"
-                  ></Element>
-                );
-              }}
-            >
-              <Tooltip title={"container"}>
-                <div className="text-2xl">🫙</div>
-              </Tooltip>
-              <span className="text-xs mt-1 text-gray-600">container</span>
-            </div>
             {filtered.map((item) => (
               <div
-                key={item.name}
                 ref={(ref) => {
-                  if (ref) {
-                    create(
-                      ref,
-                      React.createElement(
-                        ComponentsMap[item.name],
-                        item.defaultProps
-                      )
-                    );
-                  }
+                  create(
+                    ref,
+                    <Element
+                      canvas
+                      is={ComponentsMap[item.name]}
+                      background={{ r: 78, g: 78, b: 78, a: 1 }}
+                      color={{ r: 0, g: 0, b: 0, a: 1 }}
+                      height="300px"
+                      width="300px"
+                      {...item.defaultProps}
+                    ></Element>
+                  );
                 }}
+                key={item.name}
                 className="flex flex-col items-center justify-center p-2 border rounded hover:bg-gray-100 cursor-move"
               >
                 <Tooltip title={item.label}>

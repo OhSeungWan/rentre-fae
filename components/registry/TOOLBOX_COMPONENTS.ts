@@ -68,9 +68,7 @@ export const TOOLBOX_COMPONENTS = [
     category: "Misc",
     icon: "📦",
     defaultProps: {},
-    isCanvas: true,
   },
-
   {
     name: "Footer",
     label: "Footer",

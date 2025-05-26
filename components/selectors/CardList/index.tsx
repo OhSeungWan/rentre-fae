@@ -8,14 +8,17 @@ type CardListProps = {
   backgroundColor?: string;
 };
 
+const CardListContainer = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Element is={Container} canvas id="card-list-container">
+      {children}
+    </Element>
+  );
+};
+
 export const CardList: UserComponent<CardListProps> = () => {
   return (
-    <Container
-      alignItems="center"
-      flexDirection="column"
-      padding={["16", "0", "16", "0"]}
-      className="flex flex-col gap-6"
-    >
+    <CardListContainer>
       <Element
         is={Container}
         canvas
@@ -42,7 +45,7 @@ export const CardList: UserComponent<CardListProps> = () => {
         <Element is={CardItem} canvas id="first" />
         <Element is={CardItem} canvas id="second" />
       </Container> */}
-    </Container>
+    </CardListContainer>
   );
 };
 
