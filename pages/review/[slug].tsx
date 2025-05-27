@@ -28,7 +28,7 @@ export default function ReviewPage() {
   }, [slug]);
 
   const handleApprove = async () => {
-    alert(`"${slug}" 페이지 승인 완료!`);
+    alert(`"${slug}" 페이지 승인 완료! 슬랙, 노션 로깅 연동 해야함`);
     // TODO: 슬랙, Notion, 로깅 연동 가능
   };
 
