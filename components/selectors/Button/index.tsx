@@ -77,25 +77,23 @@ export const Button: UserComponent<ButtonProps> & {
       className="flex w-full shrink-0 flex-col items-start justify-start px-[24px] py-0"
     >
       {type !== "link" ? (
-        <Element is={Container} canvas id="button-container">
-          <Link
-            href={link as Route}
-            className={`flex h-[50px] shrink-0 flex-row items-center justify-center gap-[9px] self-stretch rounded-[8px] px-[16px] py-0 text-center text-[16px] font-bold leading-normal ${buttonStyle}`}
-          >
-            <Element
-              is={Text}
-              id="buttonText"
-              canvas
-              text={buttonText}
-              textAlign="center"
-              fontWeight="500"
-              tagName="span"
-              color={{ r: "255", g: "255", b: "255", a: "1" }}
-              margin={["0", "0", "0", "0"]}
-            />
-            {type !== "primary" && hasArrowButton && <ArrowRight type={type} />}
-          </Link>
-        </Element>
+        <Link
+          href={link as Route}
+          className={`flex h-[50px] shrink-0 flex-row items-center justify-center gap-[9px] self-stretch rounded-[8px] px-[16px] py-0 text-center text-[16px] font-bold leading-normal ${buttonStyle}`}
+        >
+          <Element
+            is={Text}
+            id="buttonText"
+            canvas
+            text={buttonText}
+            textAlign="center"
+            fontWeight="500"
+            tagName="span"
+            color={{ r: "255", g: "255", b: "255", a: "1" }}
+            margin={["0", "0", "0", "0"]}
+          />
+          {type !== "primary" && hasArrowButton && <ArrowRight type={type} />}
+        </Link>
       ) : (
         <Link
           href={link as Route}
