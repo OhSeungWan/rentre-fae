@@ -68,4 +68,8 @@ Text.craft = {
   related: {
     toolbar: TextSettings,
   },
+  rules: {
+    canDelete: () => true,
+    canMoveOut: () => true,
+  },
 };

@@ -6,6 +6,7 @@ import { Editor, Frame, Element } from "@craftjs/core";
 // 상태 복원용 renderer
 import { ComponentsMap } from "components/registry/ComponentsMap";
 import { CraftPreviewRenderer } from "components/review/CraftPreviewRenderer";
+import Link from "next/link";
 
 export default function ReviewPage() {
   const router = useRouter();
@@ -37,6 +38,11 @@ export default function ReviewPage() {
   return (
     <div style={{ padding: "2rem" }}>
       <h1>📄 {slug} 페이지 리뷰</h1>
+
+      <Link href="/approved" style={{ fontSize: "14px", color: "#666" }}>
+        ← 승인된 목록으로 돌아가기
+      </Link>
+
       <div
         style={{
           border: "1px solid #ccc",

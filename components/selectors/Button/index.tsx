@@ -1,7 +1,9 @@
-import { UserComponent, useNode } from "@craftjs/core";
+import { Element, UserComponent, useNode } from "@craftjs/core";
 import Link from "next/link";
 import { Route } from "next";
 import { ButtonSettings } from "./ButtonSettings";
+import { Text } from "../Text";
+import { Container } from "../Container";
 
 type ButtonProps = {
   link?: string;
@@ -45,7 +47,9 @@ const ArrowRight = ({ type }: { type: "secondary" | "teritary" }) => {
   );
 };
 
-export const Button: UserComponent<ButtonProps> = ({
+export const Button: UserComponent<ButtonProps> & {
+  meta: Record<string, any>;
+} = ({
   link = "/",
   type = "primary",
   targetBlank = false,
@@ -73,13 +77,25 @@ export const Button: UserComponent<ButtonProps> = ({
       className="flex w-full shrink-0 flex-col items-start justify-start px-[24px] py-0"
     >
       {type !== "link" ? (
-        <Link
-          href={link as Route}
-          className={`flex h-[50px] shrink-0 flex-row items-center justify-center gap-[9px] self-stretch rounded-[8px] px-[16px] py-0 text-center text-[16px] font-bold leading-normal ${buttonStyle}`}
-        >
-          {buttonText}
-          {type !== "primary" && hasArrowButton && <ArrowRight type={type} />}
-        </Link>
+        <Element is={Container} canvas id="button-container">
+          <Link
+            href={link as Route}
+            className={`flex h-[50px] shrink-0 flex-row items-center justify-center gap-[9px] self-stretch rounded-[8px] px-[16px] py-0 text-center text-[16px] font-bold leading-normal ${buttonStyle}`}
+          >
+            <Element
+              is={Text}
+              id="buttonText"
+              canvas
+              text={buttonText}
+              textAlign="center"
+              fontWeight="500"
+              tagName="span"
+              color={{ r: "255", g: "255", b: "255", a: "1" }}
+              margin={["0", "0", "0", "0"]}
+            />
+            {type !== "primary" && hasArrowButton && <ArrowRight type={type} />}
+          </Link>
+        </Element>
       ) : (
         <Link
           href={link as Route}
@@ -87,7 +103,20 @@ export const Button: UserComponent<ButtonProps> = ({
           className="flex flex-row items-center justify-center rounded-[8px] border-[1px] border-solid border-[#e2e6ec] bg-[#fff] px-[12px] py-[6px]"
         >
           <div className="whitespace-nowrap text-[14px] font-bold leading-[130%] text-[#5d7cf9]">
-            🔗 <span className="underline">{buttonText}</span>
+            🔗
+            <span className="underline">
+              <Element
+                is={Text}
+                id="buttonText"
+                canvas
+                text={buttonText}
+                textAlign="center"
+                fontWeight="500"
+                tagName="span"
+                color={{ r: "93", g: "124", b: "249", a: "1" }}
+                margin={["0", "0", "0", "0"]}
+              />
+            </span>
           </div>
         </Link>
       )}
@@ -108,4 +137,11 @@ Button.craft = {
   related: {
     toolbar: ButtonSettings,
   },
+  rules: {
+    canMoveOut: () => true,
+  },
+};
+
+Button.meta = {
+  category: "Button",
 };
