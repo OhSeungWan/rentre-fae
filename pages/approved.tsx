@@ -16,7 +16,7 @@ export default function Approved({ pages }: Props) {
       </h1>
 
       <div style={{ display: "grid", gap: "1rem" }}>
-        {pages.map(({ slug, updatedAt }) => (
+        {pages.map(({ slug, updatedAt, ...res }) => (
           <Link
             key={slug}
             href={`/review/${slug}`}
@@ -53,14 +53,34 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   );
 
   const raw = await res.json();
-  console.log(raw);
 
-  const pages = raw
-    .filter((item: any) => item.name.endsWith(".json"))
-    .map((item: any) => ({
+  // ✅ 승인된 페이지만 필터링 + updatedAt 추출
+  const pages: Props["pages"] = [];
+
+  for (const item of raw) {
+    if (!item.name.endsWith(".json")) continue;
+
+    const file = JSON.parse(
+      await fetch(item.download_url).then((r) => r.json())
+    );
+
+    const status = file?.ROOT?.custom?.status;
+    const updatedAt = file?.ROOT?.custom?.updatedAt;
+    console.log(file);
+    // if (status === "approved") {
+    // }
+    pages.push({
       slug: item.name.replace(".json", ""),
-      updatedAt: item.git_url ? item.git_url : item.sha, // fallback
-    }));
+      updatedAt: updatedAt ?? new Date().toISOString(),
+    });
+  }
+
+  // const pages = raw
+  //   .filter((item: any) => item.name.endsWith(".json"))
+  //   .map((item: any) => ({
+  //     slug: item.name.replace(".json", ""),
+  //     updatedAt: item.git_url ? item.git_url : item.sha, // fallback
+  //   }));
 
   return {
     props: { pages },

@@ -9,8 +9,6 @@ interface Props {
 export const CraftPreviewRenderer = ({ json }: Props) => {
   const { actions } = useEditor();
 
-  console.log(json);
-
   useEffect(() => {
     try {
       const first = JSON.parse(json); // ← 문자열 → 문자열

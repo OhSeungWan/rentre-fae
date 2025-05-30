@@ -12,23 +12,13 @@ type Props = {
 };
 
 export default function EditPage({ slug, json }: Props) {
-  const { actions } = useEditor();
-
-  useEffect(() => {
-    if (slug && json) {
-      try {
-        actions.deserialize(json);
-      } catch (err) {
-        console.error("❌ 상태 복원 실패:", err);
-      }
-    }
-  }, [slug, json]);
-
+  console.log(json);
   return (
-    <Editor enabled={true} resolver={ComponentsMap} onRender={RenderNode}>
+    <Editor resolver={ComponentsMap} onRender={RenderNode}>
       <Viewport>
-        {/* 새 페이지 모드: 빈 Frame */}
-        {!slug && (
+        {/* 내부에서 초기화 수행 */}
+
+        {!slug ? (
           <Frame>
             <Element
               canvas
@@ -43,10 +33,31 @@ export default function EditPage({ slug, json }: Props) {
               <Text text="새 페이지를 시작해보세요!" />
             </Element>
           </Frame>
+        ) : (
+          <>
+            <EditorInitializer slug={slug} json={json} />
+            <Frame></Frame>
+          </>
         )}
       </Viewport>
     </Editor>
   );
+}
+
+function EditorInitializer({ slug, json }: { slug?: string; json?: string }) {
+  const { actions } = useEditor();
+
+  useEffect(() => {
+    if (slug && json) {
+      try {
+        actions.deserialize(JSON.parse(json));
+      } catch (err) {
+        console.error("deserialize 실패:", err);
+      }
+    }
+  }, [slug, json]);
+
+  return null; // UI 요소는 렌더링하지 않음
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -56,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if (!slug) return { props: {} };
 
   const res = await fetch(
-    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/rejected/${slug}.json`,
+    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/data/${slug}.json`,
     {
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,

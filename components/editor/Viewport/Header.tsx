@@ -65,10 +65,24 @@ export const Header = () => {
     const slug = prompt("퍼블리싱될 슬러그를 입력하세요"); // 예: "air-purifier-1"
     const editorState = query.serialize();
 
+    const raw = query.serialize();
+    const parsed = JSON.parse(raw);
+
+    // ✅ 메타데이터 주입
+    parsed["ROOT"].custom = {
+      ...(parsed["ROOT"].custom ?? {}),
+      displayName: "App",
+      status: "under_review", // <- 'draft', 'approved', 'rejected' 등으로 활용 가능
+      updatedAt: new Date().toISOString(),
+      updatedBy: "완자님", // <- 실제 로그인 사용자 이름 등
+    };
+
+    const finalJson = JSON.stringify(parsed);
+
     const res = await fetch("/api/publish", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug, data: editorState }),
+      body: JSON.stringify({ slug, data: finalJson }),
     });
 
     const json = await res.json();
