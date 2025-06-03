@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Route } from "next";
 import { ButtonSettings } from "./ButtonSettings";
 import { Text } from "../Text";
-import { Container } from "../Container";
 
 type ButtonProps = {
   link?: string;

@@ -97,11 +97,11 @@ export const SettingsControl = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-16">
       {deletable ? (
         <Button
           variant={"destructive"}
-          className="cursor-pointer mb-4 w-full"
+          className="cursor-pointer mb-16 w-full"
           onClick={(event) => {
             event.stopPropagation();
             if (parent) {
@@ -109,7 +109,7 @@ export const SettingsControl = () => {
             }
           }}
         >
-          <Trash2 className="mr-2 h-4 w-4" />
+          <Trash2 className="mr-8 h-16 w-16" />
           Delete
         </Button>
       ) : null}
@@ -117,7 +117,7 @@ export const SettingsControl = () => {
         <Input
           type="text"
           value={text}
-          className="mb-4"
+          className="mb-16"
           onChange={(e) =>
             setProp(
               (props: { children: ReactNode }) =>

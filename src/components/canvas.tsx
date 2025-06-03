@@ -48,9 +48,9 @@ export const Canvas = ({ children }: CanvasProps) => {
       <div className={`${canvasWidth} flex flex-col h-full border rounded-sm`}>
         <div className="flex justify-between items-center p-4 w-full bg-gray-200">
           <div className="flex gap-3">
-            <div className="h-3 w-3 rounded-full bg-red-400"></div>
-            <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
-            <div className="h-3 w-3 rounded-full bg-green-400"></div>
+            <div className="h-8 w-8 rounded-full bg-red-400"></div>
+            <div className="h-8 w-8 rounded-full bg-yellow-400"></div>
+            <div className="h-8 w-8 rounded-full bg-green-400"></div>
           </div>
           <div className="flex gap-2">
             <Drawer
@@ -95,7 +95,7 @@ export const Canvas = ({ children }: CanvasProps) => {
 
           <div className="flex items-center gap-2 opacity-80 active:text-primary">
             <div className="flex">
-              <div className="w-8">
+              <div className="w-32">
                 {canUndo && (
                   <Undo
                     size={24}
@@ -107,7 +107,7 @@ export const Canvas = ({ children }: CanvasProps) => {
                   />
                 )}
               </div>
-              <div className="w-8">
+              <div className="w-32">
                 {canRedo && (
                   <Redo
                     size={24}
@@ -124,7 +124,7 @@ export const Canvas = ({ children }: CanvasProps) => {
         </div>
 
         <div
-          className="w-full flex-1 bg-white rounded-b-lg"
+          className="w-full flex-1 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden"
           ref={(ref) => {
             if (ref) {
               connect(drag(ref));

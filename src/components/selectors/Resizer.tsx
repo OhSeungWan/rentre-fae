@@ -4,13 +4,12 @@ import { debounce } from "debounce";
 import { Resizable } from "re-resizable";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { styled } from "styled-components";
-
 import {
-  isPercentage,
-  pxToPercent,
-  percentToPx,
   getElementDimensions,
-} from "../../utils/numToMeasurement";
+  isPercentage,
+  percentToPx,
+  pxToPercent,
+} from "utils/numToMeasurement";
 
 const Indicators = styled.div<{ $bound?: "row" | "column" }>`
   position: absolute;

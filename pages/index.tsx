@@ -79,6 +79,23 @@ import { Viewport } from "@/components/viewport";
 import { RenderNode } from "@/components/render-node";
 import { componentsMap } from "@/components/node/components-map";
 import { NodeOneBlock, NodeTwoBlocks } from "@/components/node/layout";
+import {
+  NodeArticleTitle,
+  NodeArticleTitleContainer,
+  NodeArticleTitleDivider,
+  NodeArticleTitleHeader,
+  NodeArticleTitleMain,
+  NodeArticleTitleSub,
+  NodeArticleTitleText,
+} from "@/components/node/article-title";
+import { BenefitBgSectionContainer } from "@/components/ui/bg-section";
+import {
+  NodeBenefitBgSection,
+  NodeBenefitBgSectionContainer,
+  NodeBenefitBgSectionItem,
+  NodeBenefitBgSectionTitle,
+  NodeBgSectionContent,
+} from "@/components/node/bg-section";
 
 export default function Index() {
   return (
@@ -96,6 +113,18 @@ export default function Index() {
           NodeCardFooter,
           NodeOneBlock,
           NodeTwoBlocks,
+          NodeArticleTitle,
+          NodeArticleTitleContainer,
+          NodeArticleTitleDivider,
+          NodeArticleTitleHeader,
+          NodeArticleTitleMain,
+          NodeArticleTitleSub,
+          NodeArticleTitleText,
+          NodeBenefitBgSectionContainer,
+          NodeBenefitBgSectionItem,
+          NodeBenefitBgSection,
+          NodeBenefitBgSectionTitle,
+          NodeBgSectionContent,
         }}
         onRender={RenderNode}
       >
@@ -104,7 +133,7 @@ export default function Index() {
           <Viewport>
             <ReactIframe
               title="my frame"
-              className="p-4 w-full h-full page-container"
+              className="p-64 w-full h-full page-container"
             >
               <Frame>
                 <Element is={Canvas} id="ROOT" canvas>

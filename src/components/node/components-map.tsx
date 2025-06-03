@@ -12,6 +12,16 @@ import { OneBlock, NodeOneBlock, NodeTwoBlocks } from "./layout";
 import { NodeButton } from "./button";
 import { NodeCard } from "./card";
 import { Element } from "@craftjs/core";
+import { NodeArticleTitle } from "./article-title";
+import {
+  ArticleTitleContainer,
+  ArticleTitleDivider,
+  ArticleTitleHeader,
+  ArticleTitleMain,
+  ArticleTitleSub,
+  ArticleTitleText,
+} from "../ui/article-title";
+import { NodeBenefitBgSection } from "./bg-section";
 
 export type Components = {
   name: string;
@@ -110,6 +120,32 @@ export const componentsMap: Components[] = [
           </OneBlock>
         ),
         node: <NodeTwoBlocks></NodeTwoBlocks>,
+      },
+    ],
+  },
+  {
+    name: "Text",
+    items: [
+      {
+        name: "ArticleTitle",
+        demo: (
+          <ArticleTitleContainer>
+            <ArticleTitleHeader>
+              <ArticleTitleMain>Title</ArticleTitleMain>
+              <ArticleTitleSub>SubTitle</ArticleTitleSub>
+              <ArticleTitleText>SubText</ArticleTitleText>
+            </ArticleTitleHeader>
+
+            <ArticleTitleDivider />
+          </ArticleTitleContainer>
+        ),
+        node: <NodeArticleTitle id="article-title" />,
+        props: {},
+      },
+      {
+        name: "BenefitBgSection",
+        node: <NodeBenefitBgSection id="benefit-bg-section" />,
+        props: {},
       },
     ],
   },

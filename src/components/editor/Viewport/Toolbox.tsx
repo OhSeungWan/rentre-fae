@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Element, useEditor } from "@craftjs/core";
 import { Tooltip } from "@mui/material";
-import { ComponentsMap } from "components/registry/ComponentsMap";
+
 import React from "react";
-import { TOOLBOX_COMPONENTS } from "components/registry/TOOLBOX_COMPONENTS";
+import { TOOLBOX_COMPONENTS } from "@/components/registry/TOOLBOX_COMPONENTS";
+import { ComponentsMap } from "@/components/registry/ComponentsMap";
 
 export const Toolbox = () => {
   const {
@@ -48,7 +49,7 @@ export const Toolbox = () => {
                   );
                 }}
                 key={item.name}
-                className="flex flex-col items-center justify-center p-2 border rounded hover:bg-gray-100 cursor-move"
+                className="flex flex-col items-center justify-center p-8 border rounded hover:bg-gray-100 cursor-move"
               >
                 <Tooltip title={item.label}>
                   <div className="text-2xl">{item.icon}</div>

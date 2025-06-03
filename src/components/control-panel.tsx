@@ -13,8 +13,8 @@ export const ControlPanel = () => {
   });
 
   return (
-    <div className="w-80 border-l h-auto">
-      <h3 className="py-2 px-4 border-b text-md font-semibold text-left">
+    <div className="w-320 border-l h-auto">
+      <h3 className="py-8 px-42 border-b text-md font-semibold text-left">
         Control Panel
       </h3>
       {active && related.toolbar && React.createElement(related.toolbar)}

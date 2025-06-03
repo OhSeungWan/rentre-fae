@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useEditor } from "@craftjs/core";
-import { ComponentsMap } from "components/registry/ComponentsMap";
 
 interface Props {
   json: string;

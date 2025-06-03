@@ -1,5 +1,5 @@
+import { ToolbarItem, ToolbarSection } from "@/components/editor";
 import { useNode } from "@craftjs/core";
-import { ToolbarItem, ToolbarSection } from "components/editor";
 
 export const ComparisonTableRowSettings = () => {
   const {

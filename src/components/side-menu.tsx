@@ -25,9 +25,9 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
       orientation="vertical"
       className="justify-start items-start border-r"
     >
-      <NavigationMenuList className="flex-col w-36">
+      <NavigationMenuList className="flex-col w-144">
         {componentsMap.map((menuItem, index) => (
-          <NavigationMenuItem key={index} className="p-2">
+          <NavigationMenuItem key={index} className="p-8">
             <NavigationMenuTrigger className="flex justify-between w-full">
               {menuItem.name}
             </NavigationMenuTrigger>
@@ -50,7 +50,7 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
-      <NavigationMenuViewport className="w-48 left-1 border-r shadow-none" />
+      <NavigationMenuViewport className="w-[300px] left-1 border-r shadow-none" />
     </NavigationMenu>
   );
 };
@@ -60,12 +60,12 @@ const ListItem = React.forwardRef<
   React.ComponentPropsWithoutRef<"a">
 >(({ className, children, ...props }, ref) => {
   return (
-    <li className="w-full p-2">
+    <li className="w-full p-8">
       <NavigationMenuLink asChild>
         <a
           ref={ref}
           className={cn(
-            "block w-full select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block w-full select-none space-y-4 rounded-md p-8 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
