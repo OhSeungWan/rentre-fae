@@ -1,5 +1,5 @@
 import { useEditor, useNode } from "@craftjs/core";
-import { MonitorPlay, Smartphone, Code, Redo, Undo } from "lucide-react";
+import { Code, Redo, Undo } from "lucide-react";
 import React, { useState } from "react";
 
 import { CodeView } from "./code-view";
@@ -124,7 +124,7 @@ export const Canvas = ({ children }: CanvasProps) => {
         </div>
 
         <div
-          className="w-full flex-1 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden"
+          className="w-full flex flex-col gap-32 flex-1 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden"
           ref={(ref) => {
             if (ref) {
               connect(drag(ref));

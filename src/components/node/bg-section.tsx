@@ -36,6 +36,8 @@ export const NodeBenefitBgSectionItem = withNode(BenefitBgSectionItem, {
   droppable,
 });
 NodeBenefitBgSectionItem.craft = {
+  draggable,
+  droppable,
   related: {
     toolbar: SettingsControl,
   },

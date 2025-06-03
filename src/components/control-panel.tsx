@@ -13,7 +13,7 @@ export const ControlPanel = () => {
   });
 
   return (
-    <div className="w-320 border-l h-auto">
+    <div className="w-[500px] border-l h-auto">
       <h3 className="py-8 px-42 border-b text-md font-semibold text-left">
         Control Panel
       </h3>

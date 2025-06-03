@@ -82,6 +82,8 @@ export const NodeArticleTitle = (
 
 NodeArticleTitle.craft = {
   displayName: "ArticleTitle",
+  draggable,
+  droppable,
   props: {},
   custom: {
     importPath: "@/components/article-title",

@@ -17,34 +17,38 @@ export const ReactIframe = ({
   const iframeDoc = contentRef?.contentWindow?.document;
 
   useLayoutEffect(() => {
-    if (iframeDoc) {
-      // Clone and append all style elements from parent head to iframe head
-      document.head.querySelectorAll("style").forEach((style) => {
-        const frameStyles = style.cloneNode(true);
-        iframeDoc.head.appendChild(frameStyles);
-      });
+    if (!iframeDoc) return;
 
-      // Clone and append all meta elements from parent head to iframe head
-      document.head.querySelectorAll("meta").forEach((meta) => {
-        const frameMeta = meta.cloneNode(true);
-        iframeDoc.head.appendChild(frameMeta);
-      });
+    // 1) 부모 헬퍼 CSS(<link>)를 iframe의 head에 복제
+    // 예: '/_next/static/css/tailwind.css' 또는 'http://localhost:3000/tailwind.css' 등
+    const parentCssLinks = document.head.querySelectorAll(
+      'link[rel="stylesheet"]'
+    );
+    parentCssLinks.forEach((link) => {
+      // 만약 Tailwind CSS만 복제하고 싶다면, link.href에 어떤 패턴이 들어있는지 확인해서 필터
+      if (link.href.includes("tailwind")) {
+        const cloned = link.cloneNode(true) as HTMLLinkElement;
+        iframeDoc.head.appendChild(cloned);
+      }
+    });
 
-      document.head
-        .querySelectorAll('link[rel="stylesheet"]')
-        .forEach((stylesheet) => {
-          const frameStylesheet = stylesheet.cloneNode(true);
-          iframeDoc.head.appendChild(frameStylesheet);
-        });
+    // 2) inline <style> 태그(Preflight나 Custom CSS)도 복제
+    document.head.querySelectorAll("style").forEach((styleEl) => {
+      iframeDoc.head.appendChild(styleEl.cloneNode(true));
+    });
 
-      // Inject Tailwind CSS script into iframe head
-      const tailwindScript = document.createElement("script");
-      tailwindScript.src = "https://cdn.tailwindcss.com";
-      iframeDoc.head.appendChild(tailwindScript);
+    // 3) 필요하다면 meta 태그도 복제
+    document.head.querySelectorAll("meta").forEach((metaEl) => {
+      iframeDoc.head.appendChild(metaEl.cloneNode(true));
+    });
 
-      // Add overflow hidden class to iframe body
-      iframeDoc.body.classList.add("overflow-hidden");
-    }
+    // CDN 스크립트는 더 이상 필요 없으므로 주석 처리하거나 제거합니다.
+    // const tailwindScript = document.createElement("script");
+    // tailwindScript.src = "https://cdn.tailwindcss.com";
+    // iframeDoc.head.appendChild(tailwindScript);
+
+    // 4) iframe body에 overflow-hidden 클래스 등 추가
+    iframeDoc.body.classList.add("overflow-hidden");
   }, [iframeDoc]);
 
   const mountRef = useCallback((node: HTMLIFrameElement | null) => {

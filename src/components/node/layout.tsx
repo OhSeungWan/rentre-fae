@@ -44,7 +44,7 @@ export const NodeTwoBlocks = ({ ...props }: NodeTwoBlocksProps) => {
 NodeTwoBlocks.craft = {
   displayName: "div",
   props: {
-    className: "flex flex-row m-2 p-4",
+    className: "flex flex-row p-[8px]",
   },
   related: {
     toolbar: SettingsControl,
@@ -54,7 +54,7 @@ NodeTwoBlocks.craft = {
 NodeOneBlock.craft = {
   ...NodeOneBlock.craft,
   props: {
-    className: "w-full",
+    className: "w-full p-[8px]",
   },
   related: {
     toolbar: SettingsControl,
