@@ -1,8 +1,8 @@
 // pages/edit/[[...slug]].tsx
 import { Editor, Frame, Element, useEditor } from "@craftjs/core";
-import { RenderNode, Viewport } from "components/editor";
-import { ComponentsMap } from "components/registry/ComponentsMap";
-import { Container, Text } from "components/selectors";
+import { RenderNode, Viewport } from "@/components/editor";
+import { ComponentsMap } from "@/components/registry/ComponentsMap";
+import { Container, Text } from "@/components/selectors";
 import { GetServerSideProps } from "next";
 import { useEffect } from "react";
 

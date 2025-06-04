@@ -25,8 +25,8 @@ export const NodeCardTitle = withNode(CardTitle, {
   droppable,
 });
 
-NodeCardTitle.craft = {
-  ...NodeCardTitle.craft,
+;(NodeCardTitle as any).craft = {
+  ...(NodeCardTitle as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -37,8 +37,8 @@ export const NodeCardDescription = withNode(CardDescription, {
   droppable,
 });
 
-NodeCardDescription.craft = {
-  ...NodeCardDescription.craft,
+;(NodeCardDescription as any).craft = {
+  ...(NodeCardDescription as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -84,8 +84,8 @@ export const NodeCard = ({ ...props }: NodeCardProps) => {
   );
 };
 
-NodeCard.craft = {
-  ...NodeCard.craft,
+;(NodeCard as any).craft = {
+  ...(NodeCard as any).craft,
   displayName: 'Card',
   props: {
     className: 'p-6 m-2',

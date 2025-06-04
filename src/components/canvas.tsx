@@ -15,7 +15,7 @@ export const Canvas = ({ children }: CanvasProps) => {
     connectors: { connect, drag },
   } = useNode();
   const [canvasWidth, setCanvasWidth] = useState("w-[100%]");
-  const { canUndo, canRedo, actions, query } = useEditor((state, query) => ({
+  const { canUndo, canRedo, actions, query } = useEditor((_, query) => ({
     canUndo: query.history.canUndo(),
     canRedo: query.history.canRedo(),
   }));
@@ -101,7 +101,7 @@ export const Canvas = ({ children }: CanvasProps) => {
                     size={24}
                     strokeWidth={1.75}
                     className="text-gray-500 hover:text-primary transition duration-300"
-                    onClick={(event) => {
+                    onClick={(_) => {
                       actions.history.undo();
                     }}
                   />
@@ -113,7 +113,7 @@ export const Canvas = ({ children }: CanvasProps) => {
                     size={24}
                     strokeWidth={1.75}
                     className="text-gray-500 hover:text-primary transition duration-300"
-                    onClick={(event) => {
+                    onClick={(_) => {
                       actions.history.redo();
                     }}
                   />

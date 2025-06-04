@@ -29,7 +29,9 @@ export const CardItem: UserComponent<CardItemProps> = ({
 
   return (
     <Link
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLAnchorElement | null) => {
+        if (dom) connect(dom);
+      }}
       href={link as Route}
       className="flex w-[calc((100%-20px)/2)] max-w-[154px] shrink-0 flex-col items-start justify-start gap-[10px]"
     >

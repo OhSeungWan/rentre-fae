@@ -20,7 +20,9 @@ export const SectionTitle: UserComponent<SectionTitleProps> = ({
 
   return (
     <div
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLDivElement | null) => {
+        if (dom) connect(dom);
+      }}
       className="flex w-full flex-row items-start justify-start gap-[8px] p-[24px]"
       style={{ backgroundColor }}
     >

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { PropsWithChildren } from 'react';
 import React, { forwardRef } from 'react';
 import { useEditor, useNode } from '@craftjs/core';

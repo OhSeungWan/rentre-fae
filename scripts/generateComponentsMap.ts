@@ -33,7 +33,7 @@ function getComponentFiles(dirPath: string) {
     .filter(Boolean) as { name: string; path: string }[];
 }
 
-function main() {
+function generate() {
   const files = getComponentFiles(SELECTORS_DIR);
 
   const imports = files
@@ -48,4 +48,4 @@ function main() {
   console.log("✅ ComponentsMap.ts 생성 완료");
 }
 
-main();
+generate();

@@ -16,7 +16,7 @@ export default function Approved({ pages }: Props) {
       </h1>
 
       <div style={{ display: "grid", gap: "1rem" }}>
-        {pages.map(({ slug, updatedAt, ...res }) => (
+        {pages.map(({ slug, updatedAt }) => (
           <Link
             key={slug}
             href={`/review/${slug}`}

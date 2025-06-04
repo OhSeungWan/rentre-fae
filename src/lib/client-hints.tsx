@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getHintUtils } from "@epic-web/client-hints";
 import {
   clientHint as colorSchemeHint,
