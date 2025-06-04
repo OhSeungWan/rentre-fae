@@ -22,6 +22,7 @@ import {
   ArticleTitleText,
 } from "../ui/article-title";
 import { NodeBenefitBgSection } from "./bg-section";
+import { NodeText } from "./Text";
 
 export type Components = {
   name: string;
@@ -147,6 +148,7 @@ export const componentsMap: Components[] = [
         node: <NodeBenefitBgSection id="benefit-bg-section" />,
         props: {},
       },
+      { name: "Text", node: <NodeText /> },
     ],
   },
 ];

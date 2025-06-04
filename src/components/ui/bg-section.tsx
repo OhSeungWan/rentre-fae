@@ -69,6 +69,13 @@ export const BgSectionContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-8", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "flex w-full flex-col items-start justify-start gap-[12px] self-stretch",
+      className
+    )}
+    {...props}
+  />
 ));
 BgSectionContent.displayName = "BgSectionContent";

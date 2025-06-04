@@ -21,35 +21,37 @@ export const NodeArticleTitleContainer = withNode(ArticleTitleContainer, {
 });
 
 export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
-  draggable,
   droppable,
 });
 
 export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
-  draggable,
   droppable,
 });
 NodeArticleTitleMain.craft = {
+  draggable,
+  droppable,
   related: {
     toolbar: SettingsControl,
   },
 };
 
 export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
-  draggable,
   droppable,
 });
 NodeArticleTitleSub.craft = {
+  draggable,
+  droppable,
   related: {
     toolbar: SettingsControl,
   },
 };
 
 export const NodeArticleTitleText = withNode(ArticleTitleText, {
-  draggable,
   droppable,
 });
 NodeArticleTitleText.craft = {
+  draggable,
+  droppable,
   related: {
     toolbar: SettingsControl,
   },
@@ -82,8 +84,6 @@ export const NodeArticleTitle = (
 
 NodeArticleTitle.craft = {
   displayName: "ArticleTitle",
-  draggable,
-  droppable,
   props: {},
   custom: {
     importPath: "@/components/article-title",

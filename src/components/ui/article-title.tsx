@@ -9,7 +9,7 @@ const ArticleTitleContainer = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "w-full flex flex-col items-center justify-center",
+      "flex w-full flex-col items-start justify-start gap-[16px] p-[16px]",
       className
     )}
     {...props}

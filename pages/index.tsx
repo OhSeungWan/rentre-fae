@@ -33,6 +33,7 @@ import {
   NodeBenefitBgSectionTitle,
   NodeBgSectionContent,
 } from "@/components/node/bg-section";
+import { NodeText } from "@/components/node/Text";
 
 export default function Index() {
   return (
@@ -62,6 +63,7 @@ export default function Index() {
           NodeBenefitBgSection,
           NodeBenefitBgSectionTitle,
           NodeBgSectionContent,
+          NodeText,
         }}
         onRender={RenderNode}
       >
