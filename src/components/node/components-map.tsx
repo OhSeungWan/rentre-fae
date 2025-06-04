@@ -25,6 +25,9 @@ import { NodeBenefitBgSection } from "./bg-section";
 import { NodeText } from "./Text";
 import { NodeStoryItem } from "./story-item";
 import { NodeStoryList } from "./story-list";
+import { NodeComparisonTable } from "./comparison-table";
+
+
 
 export type Components = {
   name: string;
@@ -150,7 +153,29 @@ export const componentsMap: Components[] = [
         node: <NodeBenefitBgSection id="benefit-bg-section" />,
         props: {},
       },
-      { name: "Text", node: <NodeText /> },
+      { name: "Text", node: <NodeText text="텍스트" /> },
+    ],
+  },
+  {
+    name: "Tables",
+    items: [
+      {
+        name: "ComparisonTable",
+        node: <NodeComparisonTable id="comparison-table" />,
+      },
+    ],
+  },
+  {
+    name: "Stories",
+    items: [
+      {
+        name: "StoryItem",
+        node: <NodeStoryItem imgSrc="/sample.jpg" title="Title" subTitle="Sub" linkUrl="/" />,
+      },
+      {
+        name: "StoryList",
+        node: <NodeStoryList id="story-list" />,
+      },
     ],
   },
   {

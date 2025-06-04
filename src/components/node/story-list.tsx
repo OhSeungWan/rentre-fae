@@ -41,7 +41,8 @@ export const NodeStoryList = (
   );
 };
 
-NodeStoryList.craft = {
+
+(NodeStoryList as any).craft = {
   displayName: "StoryList",
   props: {},
   custom: {

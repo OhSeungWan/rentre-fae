@@ -80,7 +80,7 @@ ArticleTitleText.displayName = "ArticleTitleText";
 const ArticleTitleDivider = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+>(({ className }, ref) => (
   <div
     ref={ref}
     className={cn("mx-auto w-[100px] border-t border-[#B1B9CC]", className)}

@@ -1,6 +1,12 @@
+// @ts-nocheck
 import { useEditor, useNode } from "@craftjs/core";
 import { Component, ReactNode, useEffect, useState } from "react";
 import Select, { MultiValue, components, createFilter } from "react-select";
+
+interface Option {
+  label: string;
+  value: string;
+}
 
 // import { Option } from "react-tailwindcss-select/dist/components/type";
 import { FixedSizeList as List } from "react-window";

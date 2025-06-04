@@ -13,7 +13,9 @@ export const StoryList: UserComponent<StoryListProps> = ({ background }) => {
 
   return (
     <div
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLDivElement | null) => {
+        if (dom) connect(dom);
+      }}
       className="flex flex-col gap-20"
       style={{ background }}
     >

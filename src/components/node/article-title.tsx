@@ -27,7 +27,7 @@ export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
 export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
   droppable,
 });
-NodeArticleTitleMain.craft = {
+;(NodeArticleTitleMain as any).craft = {
   draggable,
   droppable,
   related: {
@@ -38,7 +38,7 @@ NodeArticleTitleMain.craft = {
 export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
   droppable,
 });
-NodeArticleTitleSub.craft = {
+;(NodeArticleTitleSub as any).craft = {
   draggable,
   droppable,
   related: {
@@ -49,7 +49,7 @@ NodeArticleTitleSub.craft = {
 export const NodeArticleTitleText = withNode(ArticleTitleText, {
   droppable,
 });
-NodeArticleTitleText.craft = {
+;(NodeArticleTitleText as any).craft = {
   draggable,
   droppable,
   related: {

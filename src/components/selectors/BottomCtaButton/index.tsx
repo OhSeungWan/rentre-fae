@@ -20,7 +20,9 @@ export const BottomCtaButton: UserComponent<BottomCtaBtnProps> = ({
 
   return (
     <div
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLDivElement | null) => {
+        if (dom) connect(dom);
+      }}
       className="fixed bottom-0 z-[11] flex w-full max-w-[600px] flex-col items-start justify-start"
     >
       <Link
