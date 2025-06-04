@@ -34,6 +34,8 @@ import {
   NodeBgSectionContent,
 } from "@/components/node/bg-section";
 import { NodeText } from "@/components/node/Text";
+import { NodeStoryList } from "@/components/node/story-list";
+import { NodeStoryItem } from "@/components/node/story-item";
 
 export default function Index() {
   return (
@@ -64,6 +66,8 @@ export default function Index() {
           NodeBenefitBgSectionTitle,
           NodeBgSectionContent,
           NodeText,
+          NodeStoryList,
+          NodeStoryItem,
         }}
         onRender={RenderNode}
       >
