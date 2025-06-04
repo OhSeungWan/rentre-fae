@@ -56,7 +56,7 @@ export const NodeText = ({
   );
 };
 
-NodeText.craft = {
+;(NodeText as any).craft = {
   displayName: "Text",
   props: {
     text: "텍스트를 입력하기",

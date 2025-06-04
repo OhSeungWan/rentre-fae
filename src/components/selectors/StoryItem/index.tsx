@@ -25,7 +25,9 @@ export const StoryItem: UserComponent<StoryItemProps> = ({
 
   return (
     <Link
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLAnchorElement | null) => {
+        if (dom) connect(dom);
+      }}
       href={linkUrl as Route}
       className="flex w-full gap-12"
     >

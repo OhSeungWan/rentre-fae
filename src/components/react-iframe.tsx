@@ -26,8 +26,9 @@ export const ReactIframe = ({
     );
     parentCssLinks.forEach((link) => {
       // 만약 Tailwind CSS만 복제하고 싶다면, link.href에 어떤 패턴이 들어있는지 확인해서 필터
-      if (link.href.includes("tailwind")) {
-        const cloned = link.cloneNode(true) as HTMLLinkElement;
+      const l = link as HTMLLinkElement;
+      if (l.href.includes("tailwind")) {
+        const cloned = l.cloneNode(true) as HTMLLinkElement;
         iframeDoc.head.appendChild(cloned);
       }
     });

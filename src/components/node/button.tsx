@@ -8,8 +8,8 @@ export const NodeButton = withNode(Button, {
   draggable,
 });
 
-NodeButton.craft = {
-  ...NodeButton.craft,
+;(NodeButton as any).craft = {
+  ...(NodeButton as any).craft,
   related: {
     toolbar: SettingsControl,
   },

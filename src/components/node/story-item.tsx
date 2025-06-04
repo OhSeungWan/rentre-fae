@@ -6,8 +6,9 @@ const draggable = true;
 
 export const NodeStoryItem = withNode(StoryItem, { draggable });
 
-NodeStoryItem.craft = {
-  ...NodeStoryItem.craft,
+
+(NodeStoryItem as any).craft = {
+  ...(NodeStoryItem as any).craft,
   related: {
     toolbar: SettingsControl,
   },

@@ -23,7 +23,7 @@ type FooterProps = {
 };
 
 export const Footer: UserComponent<FooterProps> = ({
-  hashTags,
+  hashTags: _hashTags,
   storyList,
   cta,
 }) => {
@@ -33,7 +33,9 @@ export const Footer: UserComponent<FooterProps> = ({
 
   return (
     <footer
-      ref={(dom: HTMLDivElement | null) => dom && connect(dom)}
+      ref={(dom: HTMLDivElement | null) => {
+        if (dom) connect(dom);
+      }}
       className="flex w-full flex-col items-start justify-start gap-[56px] bg-[#fff] px-0 pt-0"
     >
       <div className="w-full px-48">

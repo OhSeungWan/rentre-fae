@@ -21,7 +21,7 @@ export const NodeBenefitBgSectionTitle = withNode(BenefitBgSectionTitle, {
   droppable,
 });
 
-NodeBenefitBgSectionTitle.craft = {
+;(NodeBenefitBgSectionTitle as any).craft = {
   related: {
     toolbar: SettingsControl,
   },
@@ -35,7 +35,7 @@ export const NodeBenefitBgSectionItem = withNode(BenefitBgSectionItem, {
   draggable,
   droppable,
 });
-NodeBenefitBgSectionItem.craft = {
+;(NodeBenefitBgSectionItem as any).craft = {
   draggable,
   droppable,
   related: {
@@ -78,7 +78,7 @@ export const NodeBenefitBgSection = (
   );
 };
 
-NodeBenefitBgSection.craft = {
+;(NodeBenefitBgSection as any).craft = {
   displayName: "BenefitBgSection",
   props: {},
   custom: {
