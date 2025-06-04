@@ -21,15 +21,16 @@ export const SettingsControl = () => {
   const { query, actions } = useEditor();
   const {
     id,
-    classNames,
+    nodeProps,
     deletable,
-    text,
     actions: { setProp },
   } = useNode((node) => ({
-    classNames: node.data.props["className"] as string,
-    text: node.data.props["children"] as string,
+    nodeProps: node.data.props,
     deletable: query.node(node.id).isDeletable(),
   }));
+
+  const { className: classNames = "", children: text, ...otherProps } =
+    nodeProps as any;
 
   const tailwindcssArr = classNames
     ? classNames.split(" ").filter(Boolean)
@@ -102,6 +103,9 @@ export const SettingsControl = () => {
     );
   };
 
+  const [newPropKey, setNewPropKey] = useState("");
+  const [newPropValue, setNewPropValue] = useState("");
+
   return (
     <div className="p-16">
       {deletable ? (
@@ -157,6 +161,67 @@ export const SettingsControl = () => {
           setValue(option);
         }}
       />
+      {Object.entries(otherProps).map(([key, val]) => {
+        if (typeof val === "boolean") {
+          return (
+            <div key={key} className="mb-16 flex items-center space-x-8">
+              <span className="text-sm w-1/3">{key}</span>
+              <input
+                type="checkbox"
+                checked={val}
+                onChange={(e) =>
+                  setProp((props: any) => {
+                    props[key] = e.target.checked;
+                  })
+                }
+              />
+            </div>
+          );
+        }
+        return (
+          <div key={key} className="mb-16 flex items-center space-x-8">
+            <span className="text-sm w-1/3">{key}</span>
+            <Input
+              value={String(val)}
+              onChange={(e) =>
+                setProp((props: any) => {
+                  const original = val;
+                  let newVal: any = e.target.value;
+                  if (typeof original === "number") {
+                    newVal = Number(newVal);
+                  }
+                  props[key] = newVal;
+                })
+              }
+            />
+          </div>
+        );
+      })}
+
+      <div className="mb-16 flex items-center space-x-8">
+        <Input
+          placeholder="Prop name"
+          value={newPropKey}
+          onChange={(e) => setNewPropKey(e.target.value)}
+        />
+        <Input
+          placeholder="Value"
+          value={newPropValue}
+          onChange={(e) => setNewPropValue(e.target.value)}
+        />
+        <Button
+          onClick={() => {
+            if (!newPropKey) return;
+            setProp((props: any) => {
+              (props as any)[newPropKey] = newPropValue;
+            });
+            setNewPropKey("");
+            setNewPropValue("");
+          }}
+        >
+          Add
+        </Button>
+      </div>
     </div>
   );
 };
