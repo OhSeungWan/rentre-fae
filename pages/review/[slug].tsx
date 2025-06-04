@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Editor, Frame, Element } from "@craftjs/core";
 
 // 상태 복원용 renderer
-import { ComponentsMap } from "components/registry/ComponentsMap";
-import { CraftPreviewRenderer } from "components/review/CraftPreviewRenderer";
+import { ComponentsMap } from "@/components/registry/ComponentsMap";
+import { CraftPreviewRenderer } from "@/components/review/CraftPreviewRenderer";
 import Link from "next/link";
 
 export default function ReviewPage() {
