@@ -27,6 +27,8 @@ import { NodeStoryItem } from "./story-item";
 import { NodeStoryList } from "./story-list";
 import { NodeComparisonTable } from "./comparison-table";
 
+
+
 export type Components = {
   name: string;
   items: {
@@ -160,6 +162,19 @@ export const componentsMap: Components[] = [
       {
         name: "ComparisonTable",
         node: <NodeComparisonTable id="comparison-table" />,
+      },
+    ],
+  },
+  {
+    name: "Stories",
+    items: [
+      {
+        name: "StoryItem",
+        node: <NodeStoryItem imgSrc="/sample.jpg" title="Title" subTitle="Sub" linkUrl="/" />,
+      },
+      {
+        name: "StoryList",
+        node: <NodeStoryList id="story-list" />,
       },
     ],
   },
