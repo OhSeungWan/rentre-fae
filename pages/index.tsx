@@ -36,6 +36,7 @@ import {
 import { NodeText } from "@/components/node/Text";
 import { NodeStoryList } from "@/components/node/story-list";
 import { NodeStoryItem } from "@/components/node/story-item";
+import { NodeComparisonTable } from "@/components/node/comparison-table";
 
 export default function Index() {
   return (
@@ -68,6 +69,7 @@ export default function Index() {
           NodeText,
           NodeStoryList,
           NodeStoryItem,
+          NodeComparisonTable,
         }}
         onRender={RenderNode}
       >
