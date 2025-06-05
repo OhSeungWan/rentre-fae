@@ -48,7 +48,7 @@ const generateComponentCode = (
       : '';
 
     const linkedChildComponents = Object.entries(linkedNodes).map(([, value]) =>
-      generateComponentCode(nodesMap, value, level + 1)
+      generateComponentCode(nodesMap, value as string, level + 1)
     );
 
     const linkedChildComponentsString = linkedChildComponents.length

@@ -22,8 +22,12 @@ function cloneTree(tree: NodeTree): NodeTree {
         ...node.data,
         parent: node.data.parent ? idMap[node.data.parent] || node.data.parent : null,
         nodes: node.data.nodes.map((child) => idMap[child]),
-        linkedNodes: Object.fromEntries(
-          Object.entries(node.data.linkedNodes || {}).map(([key, val]) => [key, idMap[val]])
+        linkedNodes: Object.entries(node.data.linkedNodes || {}).reduce(
+          (acc, [key, val]) => {
+            acc[key] = idMap[val];
+            return acc;
+          },
+          {} as Record<string, string>
         ),
       },
     };
@@ -50,7 +54,7 @@ export const useCopyPaste = () => {
         const target = query.getEvent("selected").first();
         if (!target) return;
 
-        let targetNode: ReturnType<typeof query.node> | null = null;
+        let targetNode: any = null;
         try {
           targetNode = query.node(target).get();
         } catch (err) {
@@ -59,7 +63,7 @@ export const useCopyPaste = () => {
         if (!targetNode) return;
 
         const parentId = targetNode.data.parent as string;
-        let parentNode: ReturnType<typeof query.node> | null = null;
+        let parentNode: any = null;
         try {
           parentNode = query.node(parentId).get();
         } catch (err) {

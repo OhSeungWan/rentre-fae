@@ -4,8 +4,10 @@ import { Viewport } from "@/components/viewport";
 import { RenderNode } from "@/components/render-node";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 import { ComponentsMap } from "@/components/registry/ComponentsMap";
-import { Container, Text } from "@/components/selectors";
+import { NodeContainer } from "@/components/node/container";
+import { NodeText } from "@/components/node/Text";
 import { GetServerSideProps } from "next";
+import { parseTsx } from "@/lib/parseTsx";
 import { useEffect } from "react";
 
 type Props = {
@@ -24,15 +26,10 @@ export default function EditPage({ slug, json }: Props) {
           <Frame>
             <Element
               canvas
-              is={Container}
-              width="600px"
-              height="auto"
-              background={{ r: 255, g: 255, b: 255, a: 1 }}
-              padding={["0", "0", "0", "0"]}
-              alignItems="center"
+              is={NodeContainer as typeof NodeContainer & string}
               custom={{ displayName: "App" }}
             >
-              <Text text="새 페이지를 시작해보세요!" />
+              <NodeText text="새 페이지를 시작해보세요!" />
             </Element>
           </Frame>
         ) : (
@@ -70,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if (!slug) return { props: {} };
 
   const res = await fetch(
-    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/data/${slug}.json`,
+    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/data/${slug}.tsx`,
     {
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -82,12 +79,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return { notFound: true };
   }
 
-  const text = await res.text();
+  const tsx = await res.text();
+  const json = parseTsx(tsx);
 
   return {
     props: {
       slug,
-      json: text,
+      json,
     },
   };
 };
