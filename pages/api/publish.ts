@@ -1,6 +1,7 @@
 // pages/api/publish.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Octokit } from "octokit";
+import { getOutputCode } from "@/lib/code-gen";
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
@@ -23,8 +24,12 @@ export default async function handler(
   }
 
   const branchName = `feature/page/${slug}`;
-  const filePath = `${FILE_DIR}/${slug}.json`;
-  const content = Buffer.from(JSON.stringify(data, null, 2)).toString("base64");
+  const filePath = `${FILE_DIR}/${slug}.tsx`;
+
+  const nodes = typeof data === "string" ? JSON.parse(data) : data;
+  const { importString, output } = getOutputCode(nodes);
+  const tsContent = `${importString}\n\n${output}\n`;
+  const content = Buffer.from(tsContent).toString("base64");
 
   try {
     // 1. Get the SHA of the main branch
