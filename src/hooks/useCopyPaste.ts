@@ -56,6 +56,13 @@ export const useCopyPaste = () => {
       }
     };
     document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
+    const iframe = document.getElementById("canvas-iframe") as HTMLIFrameElement | null;
+    const iframeDoc = iframe?.contentWindow?.document;
+    iframeDoc?.addEventListener("keydown", handler);
+
+    return () => {
+      document.removeEventListener("keydown", handler);
+      iframeDoc?.removeEventListener("keydown", handler);
+    };
   }, [query, actions]);
 };

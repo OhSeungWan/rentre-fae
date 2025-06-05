@@ -40,5 +40,11 @@ export const RenderNode = ({ render }: { render: React.ReactNode }) => {
     }
   }, [dom, isHover]);
 
+  useEffect(() => {
+    if (dom && id !== "ROOT") {
+      dom.classList.toggle("component-selected", isSelected);
+    }
+  }, [dom, isSelected]);
+
   return <>{render}</>;
 };
