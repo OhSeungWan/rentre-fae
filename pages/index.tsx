@@ -39,6 +39,7 @@ import { NodeStoryItem } from "@/components/node/story-item";
 import { NodeComparisonTable } from "@/components/node/comparison-table";
 import { NodeContainer } from "@/components/node/container";
 import { NodeImage } from "@/components/node/image";
+import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 
 export default function Index() {
   return (
@@ -96,6 +97,7 @@ export default function Index() {
 
           <ControlPanel />
         </div>
+        <CopyPasteHelper />
       </Editor>
     </section>
   );

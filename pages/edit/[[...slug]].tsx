@@ -1,6 +1,8 @@
 // pages/edit/[[...slug]].tsx
 import { Editor, Frame, Element, useEditor } from "@craftjs/core";
-import { RenderNode, Viewport } from "@/components/editor";
+import { Viewport } from "@/components/viewport";
+import { RenderNode } from "@/components/render-node";
+import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 import { ComponentsMap } from "@/components/registry/ComponentsMap";
 import { Container, Text } from "@/components/selectors";
 import { GetServerSideProps } from "next";
@@ -40,6 +42,7 @@ export default function EditPage({ slug, json }: Props) {
           </>
         )}
       </Viewport>
+      <CopyPasteHelper />
     </Editor>
   );
 }
