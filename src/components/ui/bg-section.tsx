@@ -19,6 +19,7 @@ const bgSectionVariants = cva(
     },
   }
 );
+
 export const BenefitBgSectionContainer = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -26,7 +27,7 @@ export const BenefitBgSectionContainer = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      " px-[24px] flex w-full flex-col items-start justify-start gap-[16px] rounded-[12px] bg-[#f5f5f5] p-[18px]",
+      "p-[24px] flex w-full flex-col items-start justify-start gap-[16px] bg-[#E7EBFE] ",
       className
     )}
     {...props}
@@ -36,8 +37,8 @@ BenefitBgSectionContainer.displayName = "BenefitBgSectionContainer";
 
 export const BenefitBgSectionTitle = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  React.HTMLAttributes<HTMLDivElement> & { number: string }
+>(({ className, number = 1, children = "", ...props }, ref) => (
   <div
     className={cn(
       "flex flex-row items-center justify-center self-stretch",
@@ -46,8 +47,11 @@ export const BenefitBgSectionTitle = React.forwardRef<
     {...props}
     ref={ref}
   >
-    <h3 className="whitespace-nowrap text-[20px] font-bold leading-[28px] text-[#2c2c2c]">
-      {props.children}
+    <div className="w-30 h-30 bg-black rounded-8 flex justify-center items-center">
+      <span className="text-white text-16 font-bold">{number}</span>
+    </div>
+    <h3 className="whitespace-nowrap text-[22px] font-bold leading-[30px] text-[#2c2c2c]">
+      {children}
     </h3>
   </div>
 ));

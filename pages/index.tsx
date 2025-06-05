@@ -37,6 +37,8 @@ import { NodeText } from "@/components/node/Text";
 import { NodeStoryList } from "@/components/node/story-list";
 import { NodeStoryItem } from "@/components/node/story-item";
 import { NodeComparisonTable } from "@/components/node/comparison-table";
+import { NodeContainer } from "@/components/node/container";
+import { NodeImage } from "@/components/node/image";
 
 export default function Index() {
   return (
@@ -70,6 +72,8 @@ export default function Index() {
           NodeStoryList,
           NodeStoryItem,
           NodeComparisonTable,
+          NodeContainer,
+          NodeImage,
         }}
         onRender={RenderNode}
       >
@@ -82,10 +86,9 @@ export default function Index() {
             >
               <Frame>
                 <Element is={Canvas} id="ROOT" canvas>
-                  <NodeButton>Button 1</NodeButton>
-                  <NodeButton>Button 2</NodeButton>
-                  <NodeButton>Button 3</NodeButton>
-                  <NodeButton>Button 4</NodeButton>
+                  <NodeImage src="/hero.png" alt="hero"></NodeImage>
+                  <NodeArticleTitle></NodeArticleTitle>
+                  <NodeBenefitBgSection></NodeBenefitBgSection>
                 </Element>
               </Frame>
             </ReactIframe>

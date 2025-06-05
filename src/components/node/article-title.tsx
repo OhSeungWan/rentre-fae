@@ -10,6 +10,8 @@ import {
   ArticleTitleText,
   ArticleTitleDivider,
 } from "../ui/article-title";
+import { NodeText } from "./Text";
+import { cn } from "@/lib/utils";
 
 const draggable = true;
 const droppable = true;
@@ -27,7 +29,7 @@ export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
 export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
   droppable,
 });
-;(NodeArticleTitleMain as any).craft = {
+(NodeArticleTitleMain as any).craft = {
   draggable,
   droppable,
   related: {
@@ -38,7 +40,7 @@ export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
 export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
   droppable,
 });
-;(NodeArticleTitleSub as any).craft = {
+(NodeArticleTitleSub as any).craft = {
   draggable,
   droppable,
   related: {
@@ -49,7 +51,7 @@ export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
 export const NodeArticleTitleText = withNode(ArticleTitleText, {
   droppable,
 });
-;(NodeArticleTitleText as any).craft = {
+(NodeArticleTitleText as any).craft = {
   draggable,
   droppable,
   related: {
@@ -73,9 +75,31 @@ export const NodeArticleTitle = (
         id="article-title-header"
         is={NodeArticleTitleHeader as typeof NodeArticleTitleHeader & string}
       >
-        <NodeArticleTitleMain>제목</NodeArticleTitleMain>
-        <NodeArticleTitleSub>부제목</NodeArticleTitleSub>
-        <NodeArticleTitleText>SubText</NodeArticleTitleText>
+        <NodeText
+          id="article-title-text"
+          className={cn(
+            "self-stretch whitespace-pre-line text-center text-[32px] font-bold leading-[38px] text-[#2c2c2c]"
+          )}
+          tagName="h1"
+          text="제목"
+        />
+
+        <NodeText
+          id="article-subTitle-text"
+          className={cn(
+            "text-[#2c2c2c] w-full whitespace-pre-line break-keep text-center leading-[28px] tracking-[-0.01em]"
+          )}
+          tagName="h3"
+          text="부제목"
+        />
+        <NodeText
+          id="article-sub-text"
+          className={cn(
+            "w-full whitespace-pre-line break-keep text-center text-[18px] leading-[24px] text-[#2c2c2c]"
+          )}
+          tagName="p"
+          text="내용"
+        />
       </Element>
       <NodeArticleTitleDivider />
     </NodeArticleTitleContainer>

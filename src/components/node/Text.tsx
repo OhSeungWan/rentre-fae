@@ -5,8 +5,12 @@ import { SettingsControl } from "../settings-control";
 
 export const NodeText = ({
   text = "텍스트를 입력하세요",
+  tagName = "span",
   ...props
-}: React.HTMLAttributes<HTMLDivElement> & { text: string }) => {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  text: string;
+  tagName?: string;
+}) => {
   const {
     id,
     connectors: { connect, drag },
@@ -50,13 +54,13 @@ export const NodeText = ({
           setLocalText(e.target.value);
         }, 500);
       }} // use true to disable editing
-      tagName={"p"} // Use a custom HTML tag (uses a div by default)
+      tagName={tagName} // Use a custom HTML tag (uses a div by default)
       {...props}
     />
   );
 };
 
-;(NodeText as any).craft = {
+(NodeText as any).craft = {
   displayName: "Text",
   props: {
     text: "텍스트를 입력하기",

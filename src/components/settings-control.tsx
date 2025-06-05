@@ -29,8 +29,11 @@ export const SettingsControl = () => {
     deletable: query.node(node.id).isDeletable(),
   }));
 
-  const { className: classNames = "", children: text, ...otherProps } =
-    nodeProps as any;
+  const {
+    className: classNames = "",
+    children: text,
+    ...otherProps
+  } = nodeProps as any;
 
   const tailwindcssArr = classNames
     ? classNames.split(" ").filter(Boolean)
@@ -162,6 +165,7 @@ export const SettingsControl = () => {
         }}
       />
       {Object.entries(otherProps).map(([key, val]) => {
+        console.log("key, val", key, val);
         if (typeof val === "boolean") {
           return (
             <div key={key} className="mb-16 flex items-center space-x-8">
