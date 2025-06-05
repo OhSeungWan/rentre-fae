@@ -49,8 +49,24 @@ export const useCopyPaste = () => {
         e.preventDefault();
         const target = query.getEvent("selected").first();
         if (!target) return;
-        const parentId = query.node(target).get().data.parent as string;
-        const parentNode = query.node(parentId).get();
+
+        let targetNode: ReturnType<typeof query.node> | null = null;
+        try {
+          targetNode = query.node(target).get();
+        } catch (err) {
+          return;
+        }
+        if (!targetNode) return;
+
+        const parentId = targetNode.data.parent as string;
+        let parentNode: ReturnType<typeof query.node> | null = null;
+        try {
+          parentNode = query.node(parentId).get();
+        } catch (err) {
+          return;
+        }
+        if (!parentNode) return;
+
         let index = parentNode.data.nodes.indexOf(target) + 1;
         clipboard.current.forEach((tree) => {
           const cloned = cloneTree(tree);
