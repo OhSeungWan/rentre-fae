@@ -1,4 +1,5 @@
 import { Editor, Frame, Element } from "@craftjs/core";
+import { DefaultEventHandlers } from "@craftjs/core";
 import { SideMenu } from "@/components/side-menu";
 import { Header } from "@/components/header";
 import { Canvas } from "@/components/canvas";
@@ -44,6 +45,7 @@ import {
   NodeImportantTitleContainer,
   NodeImportantTitleText,
 } from "@/components/node/important-title";
+import { EditorHotkeys } from "@/components/editor-hotkeys";
 
 export default function Index() {
   return (
@@ -84,7 +86,15 @@ export default function Index() {
           NodeImportantTitleContainer,
         }}
         onRender={RenderNode}
+        handlers={(store) =>
+          new DefaultEventHandlers({
+            store,
+            isMultiSelectEnabled: (e: MouseEvent) => e.shiftKey || e.metaKey,
+            removeHoverOnMouseleave: true,
+          })
+        }
       >
+        <EditorHotkeys />
         <div className="flex flex-1 relative overflow-hidden">
           <SideMenu componentsMap={componentsMap} />
           <Viewport>
