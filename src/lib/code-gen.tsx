@@ -7,14 +7,22 @@ const generateComponentCode = (
   nodeId: string,
   level: number
 ): string => {
-  const node = nodesMap[nodeId];
-  const { displayName, props, nodes, linkedNodes, custom } = node.data;
+  const node: any = (nodesMap as any)[nodeId];
+  if (!node) return '';
+  const data = node.data || node;
+  const {
+    displayName,
+    props = {},
+    nodes = [],
+    linkedNodes = {},
+    custom = {},
+  } = data;
 
   const indendation = getIndentation(level);
   const openingTag = `<${displayName}${generatePropsString(props)}>`;
   const closingTag = `</${displayName}>`;
 
-  console.log(' custom ', displayName, custom);
+
 
   if (!imports.find((item) => item.displayName === displayName)) {
     imports.push({
