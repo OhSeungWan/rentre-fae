@@ -39,6 +39,11 @@ import { NodeStoryItem } from "@/components/node/story-item";
 import { NodeComparisonTable } from "@/components/node/comparison-table";
 import { NodeContainer } from "@/components/node/container";
 import { NodeImage } from "@/components/node/image";
+import {
+  NodeImportantTitle,
+  NodeImportantTitleContainer,
+  NodeImportantTitleText,
+} from "@/components/node/important-title";
 
 export default function Index() {
   return (
@@ -74,6 +79,9 @@ export default function Index() {
           NodeComparisonTable,
           NodeContainer,
           NodeImage,
+          NodeImportantTitle,
+          NodeImportantTitleText,
+          NodeImportantTitleContainer,
         }}
         onRender={RenderNode}
       >
