@@ -32,15 +32,15 @@ function cloneTree(tree: NodeTree): NodeTree {
 
 export const useCopyPaste = () => {
   const { query, actions } = useEditor();
-  const clipboard = useRef<NodeTree | null>(null);
+  const clipboard = useRef<NodeTree[] | null>(null);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "c") {
         e.preventDefault();
-        const id = query.getEvent("selected").first();
-        if (id) {
-          clipboard.current = query.node(id).toNodeTree();
+        const ids = query.getEvent("selected").all();
+        if (ids.length > 0) {
+          clipboard.current = ids.map((id) => query.node(id).toNodeTree());
         }
       }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "v") {
@@ -50,9 +50,12 @@ export const useCopyPaste = () => {
         if (!target) return;
         const parentId = query.node(target).get().data.parent as string;
         const parentNode = query.node(parentId).get();
-        const index = parentNode.data.nodes.indexOf(target) + 1;
-        const cloned = cloneTree(clipboard.current);
-        actions.addNodeTree(cloned, parentId, index);
+        let index = parentNode.data.nodes.indexOf(target) + 1;
+        clipboard.current.forEach((tree) => {
+          const cloned = cloneTree(tree);
+          actions.addNodeTree(cloned, parentId, index);
+          index += 1;
+        });
       }
     };
     document.addEventListener("keydown", handler);
