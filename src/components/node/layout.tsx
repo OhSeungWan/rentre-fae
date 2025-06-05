@@ -41,17 +41,18 @@ export const NodeTwoBlocks = ({ ...props }: NodeTwoBlocksProps) => {
   );
 };
 
-;(NodeTwoBlocks as any).craft = {
+(NodeTwoBlocks as any).craft = {
   displayName: "div",
   props: {
     className: "flex flex-row p-[8px]",
   },
+
   related: {
     toolbar: SettingsControl,
   },
 };
 
-;(NodeOneBlock as any).craft = {
+(NodeOneBlock as any).craft = {
   ...(NodeOneBlock as any).craft,
   props: {
     className: "w-full p-[8px]",

@@ -5,11 +5,11 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from '../ui/card';
-import { Element } from '@craftjs/core';
-import { SettingsControl } from '../settings-control';
-import { withNode } from './connector';
-import { NodeButton } from './button';
+} from "@/components/ui/card";
+import { Element } from "@craftjs/core";
+import { SettingsControl } from "../settings-control";
+import { withNode } from "./connector";
+import { NodeButton } from "./button";
 
 interface NodeCardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -25,7 +25,7 @@ export const NodeCardTitle = withNode(CardTitle, {
   droppable,
 });
 
-;(NodeCardTitle as any).craft = {
+(NodeCardTitle as any).craft = {
   ...(NodeCardTitle as any).craft,
   related: {
     toolbar: SettingsControl,
@@ -37,7 +37,7 @@ export const NodeCardDescription = withNode(CardDescription, {
   droppable,
 });
 
-;(NodeCardDescription as any).craft = {
+(NodeCardDescription as any).craft = {
   ...(NodeCardDescription as any).craft,
   related: {
     toolbar: SettingsControl,
@@ -84,14 +84,14 @@ export const NodeCard = ({ ...props }: NodeCardProps) => {
   );
 };
 
-;(NodeCard as any).craft = {
+(NodeCard as any).craft = {
   ...(NodeCard as any).craft,
-  displayName: 'Card',
+  displayName: "Card",
   props: {
-    className: 'p-6 m-2',
+    className: "p-6 m-2",
   },
   custom: {
-    importPath: '@/components/card',
+    importPath: "@/components/ui/card",
   },
   related: {
     toolbar: SettingsControl,

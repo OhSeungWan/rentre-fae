@@ -43,6 +43,10 @@ export const NodeImportantTitle = () => {
 
 NodeImportantTitle.craft = {
   ...NodeImportantTitle.craft,
+  displayName: "ImportantTitle",
+  custom: {
+    importPath: "@/components/ui/important-title",
+  },
   related: {
     toolbar: SettingsControl,
   },

@@ -8,9 +8,12 @@ export const NodeButton = withNode(Button, {
   draggable,
 });
 
-;(NodeButton as any).craft = {
+(NodeButton as any).craft = {
   ...(NodeButton as any).craft,
   related: {
     toolbar: SettingsControl,
+  },
+  custom: {
+    importPath: "@/components/ui/button",
   },
 };

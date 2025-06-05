@@ -101,7 +101,7 @@ export const NodeBenefitBgSection = (
   displayName: "BenefitBgSection",
   props: {},
   custom: {
-    importPath: "@/components/BenefitBgSection",
+    importPath: "@/components/ui/bg-section",
   },
   related: {
     toolbar: SettingsControl,

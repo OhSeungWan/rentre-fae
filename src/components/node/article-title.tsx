@@ -110,7 +110,7 @@ NodeArticleTitle.craft = {
   displayName: "ArticleTitle",
   props: {},
   custom: {
-    importPath: "@/components/article-title",
+    importPath: "@/components/ui/article-title",
   },
   related: {
     toolbar: SettingsControl,

@@ -9,6 +9,9 @@ export const NodeImage = withNode(AutoHeightImage);
   props: {
     src: "/hero.png",
   },
+  custom: {
+    importPath: "@/components/ui/image",
+  },
   related: {
     toolbar: SettingsControl,
   },

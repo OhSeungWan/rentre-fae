@@ -65,6 +65,9 @@ export const NodeText = ({
   props: {
     text: "텍스트를 입력하기",
   },
+  custom: {
+    importPath: "@/components/ui/text",
+  },
   related: {
     toolbar: SettingsControl,
   },

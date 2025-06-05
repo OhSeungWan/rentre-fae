@@ -1,4 +1,10 @@
-import { Editor, Frame, Element, DefaultEventHandlers, useEditor } from "@craftjs/core";
+import {
+  Editor,
+  Frame,
+  Element,
+  DefaultEventHandlers,
+  useEditor,
+} from "@craftjs/core";
 import { SideMenu } from "@/components/side-menu";
 import { Header } from "@/components/header";
 import { Canvas } from "@/components/canvas";
@@ -104,7 +110,10 @@ export default function EditApprovedPage({ slug, json }: Props) {
         <div className="flex flex-1 relative overflow-hidden">
           <SideMenu componentsMap={componentsMap} />
           <Viewport>
-            <ReactIframe title="page" className="p-64 w-full h-full page-container">
+            <ReactIframe
+              title="page"
+              className="p-64 w-full h-full page-container"
+            >
               <EditorInitializer slug={slug} json={json} />
               <Frame>
                 <Element is={Canvas} id="ROOT" canvas>
@@ -153,6 +162,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   }
 
   const tsx = await res.text();
+  console.log(tsx);
   const json = parseTsx(tsx);
 
   return {
