@@ -20,10 +20,19 @@ const importPathMap: Record<string, string> = {
   Container: "@/components/container",
 };
 
+function getComponentName(name: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName): string | undefined {
+  if (t.isJSXIdentifier(name)) {
+    return name.name;
+  }
+  if (t.isJSXMemberExpression(name)) {
+    return (name.property as t.JSXIdentifier).name;
+  }
+  return undefined;
+}
+
 function jsxToNode(el: t.JSXElement, parent: string | null, nodes: Record<string, any>): string {
   const opening = el.openingElement;
-  const nameNode = opening.name as t.JSXIdentifier;
-  const compName = nameNode.name;
+  const compName = getComponentName(opening.name) ?? "div";
   let id = compName === "div" ? "ROOT" : genId();
 
   const props: Record<string, any> = {};
@@ -60,6 +69,13 @@ function jsxToNode(el: t.JSXElement, parent: string | null, nodes: Record<string
     if (t.isJSXElement(child)) {
       const childId = jsxToNode(child, id, nodes);
       nodes[id].nodes.push(childId);
+    } else if (t.isJSXFragment(child)) {
+      child.children.forEach((fragChild) => {
+        if (t.isJSXElement(fragChild)) {
+          const childId = jsxToNode(fragChild, id, nodes);
+          nodes[id].nodes.push(childId);
+        }
+      });
     }
   });
 
