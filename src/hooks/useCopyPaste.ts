@@ -17,6 +17,7 @@ function cloneTree(tree: NodeTree): NodeTree {
     newNodes[newId] = {
       ...node,
       id: newId,
+      events: { selected: false, hovered: false, dragged: false },
       data: {
         ...node.data,
         parent: node.data.parent ? idMap[node.data.parent] || node.data.parent : null,
