@@ -1,7 +1,12 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
 import { Button } from "./ui/button";
+import { useEditor } from "@craftjs/core";
+import { useRouter } from "next/router";
 
 export const CodeView = ({ codeString }: { codeString?: string }) => {
+  const router = useRouter();
+  const { query } = useEditor((_, query) => ({ query }));
+
   const code = codeString
     ? codeString
     : // Initial code or a placeholder
@@ -26,12 +31,37 @@ export const CodeView = ({ codeString }: { codeString?: string }) => {
     URL.revokeObjectURL(url);
   };
 
+  const publish = async () => {
+    const slugFromQuery = router.query.slug;
+    const slug = typeof slugFromQuery === "string" ? slugFromQuery : prompt("slug?") || undefined;
+
+    if (!slug) {
+      alert("Slug is required to publish");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/publish", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, data: query.getNodes() }),
+      });
+      const json = await res.json();
+      if (res.ok) {
+        alert("✅ Publish succeeded: " + json.prUrl);
+      } else {
+        alert(json.error || "Publish failed");
+      }
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
   return (
     <div className="rounded-md h-full border border-input flex flex-col">
-      <div className="p-2 border-b">
-        <Button size="sm" onClick={downloadFile}>
-          Download .tsx
-        </Button>
+      <div className="p-2 border-b flex gap-2">
+        <Button size="sm" onClick={downloadFile}>Download .tsx</Button>
+        <Button size="sm" variant="secondary" onClick={publish}>Publish</Button>
       </div>
       <div className="flex-1">
         <CopyBlock
