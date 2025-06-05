@@ -1,9 +1,13 @@
 import React from 'react';
-
 import '../styles/app.css';
+import { ClipboardProvider } from '@/lib/clipboard';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <ClipboardProvider>
+      <Component {...pageProps} />
+    </ClipboardProvider>
+  );
 }
 
 // Only uncomment this method if you have blocking data requirements for

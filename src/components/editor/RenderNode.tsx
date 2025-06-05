@@ -10,6 +10,8 @@ import { styled } from "styled-components";
 import { LuMove } from "react-icons/lu";
 import { MdDeleteForever } from "react-icons/md";
 import { GoArrowUp } from "react-icons/go";
+import { FaCopy, FaPaste } from "react-icons/fa";
+import { useClipboard } from "@/lib/clipboard";
 
 const IndicatorDiv = styled.div`
   height: 30px;
@@ -61,6 +63,7 @@ export const RenderNode = ({ render }) => {
   }));
 
   const currentRef = React.useRef<HTMLDivElement | null>(null);
+  const { tree, setTree } = useClipboard();
 
   React.useEffect(() => {
     if (dom) {
@@ -137,6 +140,31 @@ export const RenderNode = ({ render }) => {
                   <GoArrowUp viewBox="-4 -1 24 24" />
                 </Btn>
               )}
+              <Btn
+                className="mr-2 cursor-pointer"
+                onMouseDown={(e: React.MouseEvent) => {
+                  e.stopPropagation();
+                  const t = query.node(id).toNodeTree();
+                  setTree(t);
+                }}
+              >
+                <FaCopy />
+              </Btn>
+              {tree ? (
+                <Btn
+                  className="mr-2 cursor-pointer"
+                  onMouseDown={(e: React.MouseEvent) => {
+                    e.stopPropagation();
+                    const parentId = query.node(id).get().data.parent;
+                    const index =
+                      query.node(parentId).childNodes().indexOf(id) + 1;
+                    actions.addNodeTree(tree, parentId, index);
+                    actions.selectNode(tree.rootNodeId);
+                  }}
+                >
+                  <FaPaste />
+                </Btn>
+              ) : null}
               {deletable ? (
                 <Btn
                   className="cursor-pointer"
