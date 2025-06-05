@@ -31,8 +31,8 @@ export const SideMenu = ({ componentsMap }: SideMenuProps) => {
             <NavigationMenuTrigger className="flex justify-between w-full">
               {menuItem.name}
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="w-full">
-              <ul className="w-full">
+            <NavigationMenuContent className="w-full h-full">
+              <ul className="w-full overflow-y-scroll h-full">
                 {menuItem.items.map((component, index) => (
                   <ListItem
                     key={index}
@@ -65,7 +65,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block w-full select-none space-y-4 rounded-md p-8 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block w-full select-none space-y-4 rounded-md p-8 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground border-1 border-dashed border-gray-300",
             className
           )}
           {...props}
