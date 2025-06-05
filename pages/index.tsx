@@ -45,7 +45,6 @@ import {
   NodeImportantTitleContainer,
   NodeImportantTitleText,
 } from "@/components/node/important-title";
-import { EditorHotkeys } from "@/components/editor-hotkeys";
 
 export default function Index() {
   return (
@@ -94,7 +93,6 @@ export default function Index() {
           })
         }
       >
-        <EditorHotkeys />
         <div className="flex flex-1 relative overflow-hidden">
           <SideMenu componentsMap={componentsMap} />
           <Viewport>
