@@ -46,6 +46,7 @@ import {
 } from "@/components/node/important-title";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 import { GetServerSideProps } from "next";
+import { parseTsx } from "@/lib/parseTsx";
 import { useEffect } from "react";
 
 interface Props {
@@ -139,7 +140,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   if (typeof slug !== "string") return { notFound: true };
 
   const res = await fetch(
-    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/data/${slug}.json`,
+    `https://raw.githubusercontent.com/OhSeungWan/rentre-fae-data/main/data/${slug}.tsx`,
     {
       headers: {
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -151,9 +152,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     return { notFound: true };
   }
 
-  const text = await res.text();
+  const tsx = await res.text();
+  const json = parseTsx(tsx);
 
   return {
-    props: { slug, json: text },
+    props: { slug, json },
   };
 };
