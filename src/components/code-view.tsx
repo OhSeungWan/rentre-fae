@@ -1,4 +1,5 @@
 import { CopyBlock, dracula } from 'react-code-blocks';
+import { Button } from "./ui/button";
 
 export const CodeView = ({ codeString }: { codeString?: string }) => {
   const code = codeString
@@ -11,16 +12,35 @@ export const CodeView = ({ codeString }: { codeString?: string }) => {
     <div className="font-bold text-xl mb-2">{title}</div>\n 
     
     <p className="text-gray-700 text-base">{description}</p>\n      </div>\n    </div>\n  );\n};\n\nexport default Card
-    `;
+      `;
+
+  const downloadFile = () => {
+    const blob = new Blob([code], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "code.tsx";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   return (
-    <div className="rounded-md h-full border border-input">
-      <CopyBlock
-        customStyle={{ height: '100%', overflow: 'scroll' }}
-        text={code}
-        language={'typescript'}
-        theme={dracula}
-      />
+    <div className="rounded-md h-full border border-input flex flex-col">
+      <div className="p-2 border-b">
+        <Button size="sm" onClick={downloadFile}>
+          Download .tsx
+        </Button>
+      </div>
+      <div className="flex-1">
+        <CopyBlock
+          customStyle={{ height: "100%", overflow: "scroll" }}
+          text={code}
+          language={"typescript"}
+          theme={dracula}
+        />
+      </div>
     </div>
   );
 };
