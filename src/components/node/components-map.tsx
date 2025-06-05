@@ -105,7 +105,7 @@ export const componentsMap: Components[] = [
     ],
   },
   {
-    name: "Text",
+    name: "Items",
     items: [
       {
         name: "ArticleTitle",
@@ -227,7 +227,13 @@ export const componentsMap: Components[] = [
   //   items: [
   //     {
   //       name: "ComparisonTable",
-  //       node: <NodeComparisonTable id="comparison-table" />,
+  //       node: (
+  //         <NodeComparisonTable
+  //           id="comparison-table"
+  //           columnCount={3}
+  //           rowCount={3}
+  //         />
+  //       ),
   //     },
   //   ],
   // },
