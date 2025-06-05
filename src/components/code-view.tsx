@@ -41,10 +41,11 @@ export const CodeView = ({ codeString }: { codeString?: string }) => {
     }
 
     try {
+      const serialized = query.serialize();
       const res = await fetch("/api/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, data: query.getNodes() }),
+        body: JSON.stringify({ slug, data: serialized }),
       });
       const json = await res.json();
       if (res.ok) {

@@ -41,13 +41,18 @@ export default async function handler(
 
     const baseSha = baseRef.object.sha;
 
-    // 2. Create a new branch from main
-    await octokit.rest.git.createRef({
-      owner: REPO_OWNER,
-      repo: REPO_NAME,
-      ref: `refs/heads/${branchName}`,
-      sha: baseSha,
-    });
+    // 2. Create a new branch from main if it doesn't already exist
+    try {
+      await octokit.rest.git.createRef({
+        owner: REPO_OWNER,
+        repo: REPO_NAME,
+        ref: `refs/heads/${branchName}`,
+        sha: baseSha,
+      });
+    } catch (err: any) {
+      // Branch already exists
+      if (err.status !== 422) throw err;
+    }
 
     // 3. Create or update file in the new branch
     await octokit.rest.repos.createOrUpdateFileContents({
