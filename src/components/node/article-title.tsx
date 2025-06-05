@@ -25,6 +25,11 @@ export const NodeArticleTitleContainer = withNode(ArticleTitleContainer, {
 export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
   droppable,
 });
+(NodeArticleTitleHeader as any).craft = {
+  custom: {
+    importPath: "@/components/ui/article-title",
+  },
+};
 
 export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
   droppable,
