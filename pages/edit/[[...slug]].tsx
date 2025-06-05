@@ -4,7 +4,8 @@ import { Viewport } from "@/components/viewport";
 import { RenderNode } from "@/components/render-node";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 import { ComponentsMap } from "@/components/registry/ComponentsMap";
-import { Container, Text } from "@/components/selectors";
+import { NodeContainer } from "@/components/node/container";
+import { NodeText } from "@/components/node/Text";
 import { GetServerSideProps } from "next";
 import { useEffect } from "react";
 
@@ -24,15 +25,10 @@ export default function EditPage({ slug, json }: Props) {
           <Frame>
             <Element
               canvas
-              is={Container}
-              width="600px"
-              height="auto"
-              background={{ r: 255, g: 255, b: 255, a: 1 }}
-              padding={["0", "0", "0", "0"]}
-              alignItems="center"
+              is={NodeContainer as typeof NodeContainer & string}
               custom={{ displayName: "App" }}
             >
-              <Text text="새 페이지를 시작해보세요!" />
+              <NodeText text="새 페이지를 시작해보세요!" />
             </Element>
           </Frame>
         ) : (

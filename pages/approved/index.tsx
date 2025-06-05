@@ -19,7 +19,7 @@ export default function Approved({ pages }: Props) {
         {pages.map(({ slug, updatedAt }) => (
           <Link
             key={slug}
-            href={`/review/${slug}`}
+            href={`/approved/${slug}`}
             style={{
               display: "block",
               padding: "1rem",
@@ -66,13 +66,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
     const status = file?.ROOT?.custom?.status;
     const updatedAt = file?.ROOT?.custom?.updatedAt;
-    console.log(file);
-    // if (status === "approved") {
-    // }
-    pages.push({
-      slug: item.name.replace(".json", ""),
-      updatedAt: updatedAt ?? new Date().toISOString(),
-    });
+
+    if (status === "approved") {
+      pages.push({
+        slug: item.name.replace(".json", ""),
+        updatedAt: updatedAt ?? new Date().toISOString(),
+      });
+    }
   }
 
   // const pages = raw
