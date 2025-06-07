@@ -134,8 +134,10 @@ function EditorInitializer({ slug, json }: { slug: string; json: string }) {
   const { actions } = useEditor();
 
   useEffect(() => {
+    if (!slug || !json) return;
+    console.log(JSON.parse(json));
     try {
-      actions.deserialize(JSON.parse(json));
+      actions.deserialize(JSON.parse(json).nodes);
     } catch (err) {
       console.error("deserialize 실패:", err);
     }

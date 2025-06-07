@@ -10,9 +10,8 @@ export const NodeComparisonTableHeader = withNode(ComparisonTableHeader, {
   droppable,
 });
 
-;(NodeComparisonTableHeader as any).craft = {
-  draggable,
-  droppable,
+(NodeComparisonTableHeader as any).craft = {
+  ...(NodeComparisonTableHeader as any).craft,
   related: {
     toolbar: SettingsControl,
   },

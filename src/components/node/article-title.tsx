@@ -26,6 +26,7 @@ export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
   droppable,
 });
 (NodeArticleTitleHeader as any).craft = {
+  ...(NodeArticleTitleHeader as any).craft,
   custom: {
     importPath: "@/components/ui/article-title",
   },
@@ -35,8 +36,7 @@ export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
   droppable,
 });
 (NodeArticleTitleMain as any).craft = {
-  draggable,
-  droppable,
+  ...(NodeArticleTitleMain as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -45,9 +45,9 @@ export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
 export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
   droppable,
 });
+
 (NodeArticleTitleSub as any).craft = {
-  draggable,
-  droppable,
+  ...(NodeArticleTitleSub as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -57,8 +57,7 @@ export const NodeArticleTitleText = withNode(ArticleTitleText, {
   droppable,
 });
 (NodeArticleTitleText as any).craft = {
-  draggable,
-  droppable,
+  ...(NodeArticleTitleText as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -112,6 +111,7 @@ export const NodeArticleTitle = (
 };
 
 NodeArticleTitle.craft = {
+  ...NodeArticleTitle.craft,
   displayName: "ArticleTitle",
   props: {},
   custom: {

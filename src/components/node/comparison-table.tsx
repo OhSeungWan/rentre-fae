@@ -18,8 +18,17 @@ export const NodeComparisonTable = (
 ) => {
   const { rowCount = 2, columnCount = 3, ...rest } = props;
   return (
-    <NodeComparisonTableContainer rowCount={rowCount} columnCount={columnCount} {...rest}>
-      <Element canvas is={NodeComparisonTableHeader as any} id="comparison-header" columnCount={columnCount} />
+    <NodeComparisonTableContainer
+      rowCount={rowCount}
+      columnCount={columnCount}
+      {...rest}
+    >
+      <Element
+        canvas
+        is={NodeComparisonTableHeader as any}
+        id="comparison-header"
+        columnCount={columnCount}
+      />
       {Array.from({ length: rowCount }).map((_, i) => (
         <Element
           canvas
@@ -33,7 +42,8 @@ export const NodeComparisonTable = (
   );
 };
 
-;(NodeComparisonTable as any).craft = {
+(NodeComparisonTable as any).craft = {
+  ...(NodeComparisonTable as any).craft,
   displayName: "ComparisonTable",
   props: {},
   custom: {

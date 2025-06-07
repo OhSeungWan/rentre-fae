@@ -6,23 +6,27 @@ let idCounter = 0;
 const genId = () => `node_${idCounter++}`;
 
 const importPathMap: Record<string, string> = {
-  Button: "@/components/button",
-  Card: "@/components/card",
-  CardHeader: "@/components/card",
-  CardContent: "@/components/card",
-  CardFooter: "@/components/card",
-  CardTitle: "@/components/card",
-  CardDescription: "@/components/card",
-  BenefitBgSection: "@/components/BenefitBgSection",
-  ArticleTitle: "@/components/article-title",
-  Image: "@/components/image",
-  Text: "@/components/text",
-  Container: "@/components/container",
+  Button: "@/components/ui/button",
+  Card: "@/components/ui/card",
+  CardHeader: "@/components/ui/card",
+  CardContent: "@/components/ui/card",
+  CardFooter: "@/components/ui/card",
+  CardTitle: "@/components/ui/card",
+  CardDescription: "@/components/ui/card",
+  BenefitBgSection: "@/components/ui/bg-section",
+  ArticleTitle: "@/components/ui/article-title",
+  Image: "@/components/ui/image",
+  Text: "@/components/ui/text",
+  Container: "@/components/ui/container",
 };
 
-function getComponentName(name: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName): string | undefined {
+function getComponentName(
+  name: t.JSXIdentifier | t.JSXMemberExpression | t.JSXNamespacedName
+): string | undefined {
   if (t.isJSXIdentifier(name)) {
-    return name.name;
+    // if (name.name === "div") return "NodeContainer";
+    if (name.name.includes("Node")) return name.name;
+    return `Node` + name.name;
   }
   if (t.isJSXMemberExpression(name)) {
     return (name.property as t.JSXIdentifier).name;
@@ -30,9 +34,14 @@ function getComponentName(name: t.JSXIdentifier | t.JSXMemberExpression | t.JSXN
   return undefined;
 }
 
-function jsxToNode(el: t.JSXElement, parent: string | null, nodes: Record<string, any>): string {
+function jsxToNode(
+  el: t.JSXElement,
+  parent: string | null,
+  nodes: Record<string, any>
+): string {
   const opening = el.openingElement;
   const compName = getComponentName(opening.name) ?? "div";
+  console.log("compName", compName);
   let id = compName === "div" ? "ROOT" : genId();
 
   const props: Record<string, any> = {};
@@ -45,7 +54,8 @@ function jsxToNode(el: t.JSXElement, parent: string | null, nodes: Record<string
         if (t.isStringLiteral(attr.value)) props[key] = attr.value.value;
         if (
           t.isJSXExpressionContainer(attr.value) &&
-          (t.isStringLiteral(attr.value.expression) || t.isNumericLiteral(attr.value.expression))
+          (t.isStringLiteral(attr.value.expression) ||
+            t.isNumericLiteral(attr.value.expression))
         ) {
           props[key] = (attr.value.expression as any).value;
         }
@@ -83,7 +93,10 @@ function jsxToNode(el: t.JSXElement, parent: string | null, nodes: Record<string
 }
 
 export function parseTsx(code: string): string {
-  const ast = parse(code, { sourceType: "module", plugins: ["typescript", "jsx"] });
+  const ast = parse(code, {
+    sourceType: "module",
+    plugins: ["typescript", "jsx"],
+  });
   let root: t.JSXElement | null = null;
   traverse(ast, {
     ExportNamedDeclaration(path) {

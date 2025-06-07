@@ -61,6 +61,7 @@ export const NodeText = ({
 };
 
 (NodeText as any).craft = {
+  ...(NodeText as any).craft,
   displayName: "Text",
   props: {
     text: "텍스트를 입력하기",

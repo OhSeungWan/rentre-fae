@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { CodeView } from "./code-view";
 import { DrawerTrigger, DrawerContent, Drawer } from "./ui/drawer";
 import { getOutputCode, getOutputHTMLFromId } from "@/lib/code-gen";
+import { NodeContainer } from "./node/container";
 
 type CanvasProps = {
   children: React.ReactNode;
@@ -20,28 +21,14 @@ export const Canvas = ({ children }: CanvasProps) => {
     canRedo: query.history.canRedo(),
   }));
   const [output, setOutput] = useState<string | null>();
-  const [htmlOutput, setHtmlOutput] = useState<string | null>();
 
   const generateCode = () => {
     const { importString, output } = getOutputCode(query.getNodes());
 
-    console.log("printing ", importString, output);
-
     setOutput(`${importString}\n\n${output}`);
   };
 
-  const generateHTML = () => {
-    const htmlOutput = getOutputHTMLFromId("canvas-iframe");
-
-    setHtmlOutput(htmlOutput);
-  };
-
   const [open, setOpen] = useState(false);
-  const [htmlOpen, setHtmlOpen] = useState(false);
-
-  const handleIconClick = (newWidth: any) => {
-    setCanvasWidth(newWidth);
-  };
 
   return (
     <div className="w-full h-full flex justify-center">
@@ -123,7 +110,7 @@ export const Canvas = ({ children }: CanvasProps) => {
           </div>
         </div>
 
-        <div
+        <NodeContainer
           className="w-full flex flex-col gap-32 flex-1 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden"
           ref={(ref) => {
             if (ref) {
@@ -132,15 +119,19 @@ export const Canvas = ({ children }: CanvasProps) => {
           }}
         >
           {children}
-        </div>
+        </NodeContainer>
       </div>
     </div>
   );
 };
 
 Canvas.craft = {
-  displayName: "div",
+  displayName: "Container",
+  custom: {
+    importPath: "@/components/ui/container",
+  },
   props: {
-    className: "w-full h-full",
+    className:
+      "w-full flex flex-col gap-32 flex-1 bg-white rounded-b-lg overflow-y-auto overflow-x-hidden",
   },
 };

@@ -49,6 +49,7 @@ export const NodeBenefitBgSectionItem = withNode(BenefitBgSectionItem, {
 });
 
 (NodeBenefitBgSectionItem as any).craft = {
+  ...(NodeBenefitBgSectionItem as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -98,6 +99,7 @@ export const NodeBenefitBgSection = (
 };
 
 (NodeBenefitBgSection as any).craft = {
+  ...(NodeBenefitBgSection as any).craft,
   displayName: "BenefitBgSection",
   props: {},
   custom: {
