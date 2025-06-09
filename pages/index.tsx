@@ -33,6 +33,7 @@ import { NodeContainer } from "@/components/node/container";
 import { NodeImage } from "@/components/node/image";
 
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
+import { DraftStorageHelper } from "@/hooks/DraftStorageHelper";
 
 import {
   NodeImportantTitle,
@@ -101,6 +102,7 @@ export default function Index() {
           <ControlPanel />
         </div>
         <CopyPasteHelper />
+        <DraftStorageHelper />
       </Editor>
     </section>
   );

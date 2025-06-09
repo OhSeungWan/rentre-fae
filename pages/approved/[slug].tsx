@@ -45,6 +45,7 @@ import {
   NodeImportantTitleText,
 } from "@/components/node/important-title";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
+import { DraftStorageHelper } from "@/hooks/DraftStorageHelper";
 import { GetServerSideProps } from "next";
 import { parseTsx } from "@/lib/parseTsx";
 import { useEffect } from "react";
@@ -116,6 +117,7 @@ export default function EditApprovedPage({ slug, json }: Props) {
           <ControlPanel />
         </div>
         <CopyPasteHelper />
+        <DraftStorageHelper storageKey={`approved-${slug}`} />
       </Editor>
     </section>
   );

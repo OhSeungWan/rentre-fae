@@ -3,6 +3,7 @@ import { Editor, Frame, Element, useEditor } from "@craftjs/core";
 import { Viewport } from "@/components/viewport";
 import { RenderNode } from "@/components/render-node";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
+import { DraftStorageHelper } from "@/hooks/DraftStorageHelper";
 import { ComponentsMap } from "@/components/registry/ComponentsMap";
 import { NodeContainer } from "@/components/node/container";
 import { NodeText } from "@/components/node/Text";
@@ -40,6 +41,7 @@ export default function EditPage({ slug, json }: Props) {
         )}
       </Viewport>
       <CopyPasteHelper />
+      <DraftStorageHelper storageKey={`edit-${slug || 'new'}`} />
     </Editor>
   );
 }
