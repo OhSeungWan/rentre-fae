@@ -25,12 +25,8 @@ export const ReactIframe = ({
       'link[rel="stylesheet"]'
     );
     parentCssLinks.forEach((link) => {
-      // 만약 Tailwind CSS만 복제하고 싶다면, link.href에 어떤 패턴이 들어있는지 확인해서 필터
-      const l = link as HTMLLinkElement;
-      if (l.href.includes("tailwind")) {
-        const cloned = l.cloneNode(true) as HTMLLinkElement;
-        iframeDoc.head.appendChild(cloned);
-      }
+      const cloned = link.cloneNode(true) as HTMLLinkElement;
+      iframeDoc.head.appendChild(cloned);
     });
 
     // 2) inline <style> 태그(Preflight나 Custom CSS)도 복제
