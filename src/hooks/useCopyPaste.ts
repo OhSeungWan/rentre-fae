@@ -40,16 +40,31 @@ export const useCopyPaste = () => {
   const clipboard = useRef<NodeTree[] | null>(null);
 
   useEffect(() => {
+    const isTextInput = (el: Element | null) => {
+      if (!el) return false;
+      const tag = el.tagName;
+      return (
+        (el as HTMLElement).isContentEditable ||
+        tag === "INPUT" ||
+        tag === "TEXTAREA"
+      );
+    };
+
     const handler = (e: KeyboardEvent) => {
+      const activeEl = (e.target as Node | null)?.ownerDocument?.activeElement ?? null;
+      const inTextInput = isTextInput(activeEl);
+
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "c") {
-        e.preventDefault();
         const ids = query.getEvent("selected").all();
-        if (ids.length > 0) {
+        if (!inTextInput && ids.length > 0) {
+          e.preventDefault();
           clipboard.current = ids.map((id) => query.node(id).toNodeTree());
+        } else {
+          clipboard.current = null;
         }
       }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "v") {
-        if (!clipboard.current) return;
+        if (!clipboard.current || inTextInput) return;
         e.preventDefault();
         const target = query.getEvent("selected").first();
         if (!target) return;
