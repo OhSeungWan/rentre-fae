@@ -54,6 +54,24 @@ export const NodeText = ({
           setLocalText(e.target.value);
         }, 500);
       }} // use true to disable editing
+      onPaste={(e) => {
+        e.preventDefault();
+        const text = e.clipboardData.getData("text/plain");
+        if (document.queryCommandSupported("insertText")) {
+          document.execCommand("insertText", false, text);
+        } else {
+          const selection = window.getSelection();
+          if (selection && selection.rangeCount > 0) {
+            selection.deleteFromDocument();
+            selection.getRangeAt(0).insertNode(document.createTextNode(text));
+          }
+        }
+        const current = contentRef.current?.innerText ?? text;
+        setProp((prop) => {
+          prop.text = current;
+          setLocalText(current);
+        }, 500);
+      }}
       tagName={tagName} // Use a custom HTML tag (uses a div by default)
       {...props}
     />
