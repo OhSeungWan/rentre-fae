@@ -39,13 +39,29 @@ export const useCopyPaste = () => {
   const { query, actions } = useEditor();
   const clipboard = useRef<NodeTree[] | null>(null);
 
+  const isEditableTarget = (target: EventTarget | null): boolean => {
+    if (!target || !(target instanceof HTMLElement)) return false;
+    const tag = target.tagName;
+    return (
+      tag === "INPUT" ||
+      tag === "TEXTAREA" ||
+      target.isContentEditable
+    );
+  };
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      if (isEditableTarget(e.target)) {
+        // allow normal copy/paste behaviour inside editable elements
+        return;
+      }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "c") {
-        e.preventDefault();
         const ids = query.getEvent("selected").all();
         if (ids.length > 0) {
+          e.preventDefault();
           clipboard.current = ids.map((id) => query.node(id).toNodeTree());
+        } else {
+          clipboard.current = null;
         }
       }
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "v") {
@@ -77,6 +93,7 @@ export const useCopyPaste = () => {
           actions.addNodeTree(cloned, parentId, index);
           index += 1;
         });
+        clipboard.current = null;
       }
     };
     document.addEventListener("keydown", handler);
