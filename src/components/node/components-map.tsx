@@ -12,20 +12,16 @@ import { OneBlock, NodeOneBlock, NodeTwoBlocks } from "./layout";
 import { NodeButton } from "./button";
 import { NodeCard } from "./card";
 import { Element } from "@craftjs/core";
-import { NodeArticleTitle } from "./article-title";
+import { NodeArticleTitle, NodeArticleTitleHeader } from "./article-title";
 import {
-  ArticleTitleContainer,
+  ArticleTitle,
   ArticleTitleDivider,
   ArticleTitleHeader,
-  ArticleTitleMain,
-  ArticleTitleSub,
-  ArticleTitleText,
 } from "../ui/article-title";
 import { NodeBenefitBgSection } from "./bg-section";
 import { NodeText } from "./Text";
 import { NodeStoryItem } from "./story-item";
 
-import { BenefitBgSectionContainer } from "../ui/bg-section";
 import { Container } from "../ui/container";
 import { cn } from "@/lib/utils";
 import { Text } from "../ui/text";
@@ -33,6 +29,7 @@ import { AutoHeightImage } from "../ui/image";
 import { NodeImage } from "./image";
 import { NodeImportantTitle } from "./important-title";
 import { NodeContainer } from "./container";
+import { BenefitBgSection } from "../ui/bg-section";
 
 export type Components = {
   name: string;
@@ -111,15 +108,33 @@ export const componentsMap: Components[] = [
       {
         name: "ArticleTitle",
         demo: (
-          <ArticleTitleContainer>
+          <ArticleTitle>
             <ArticleTitleHeader>
-              <ArticleTitleMain>Title</ArticleTitleMain>
-              <ArticleTitleSub>SubTitle</ArticleTitleSub>
-              <ArticleTitleText>SubText</ArticleTitleText>
-            </ArticleTitleHeader>
+              <Text
+                className={cn(
+                  "self-stretch whitespace-pre-line text-center text-[32px] font-bold leading-[38px] text-[#2c2c2c]"
+                )}
+                tagName="h1"
+                text="제목"
+              />
 
+              <Text
+                className={cn(
+                  "text-[#2c2c2c] w-full whitespace-pre-line break-keep text-center leading-[28px] tracking-[-0.01em]"
+                )}
+                tagName="h3"
+                text="부제목"
+              />
+              <Text
+                className={cn(
+                  "w-full whitespace-pre-line break-keep text-center text-[18px] leading-[24px] text-[#2c2c2c]"
+                )}
+                tagName="p"
+                text="내용"
+              />
+            </ArticleTitleHeader>
             <ArticleTitleDivider />
-          </ArticleTitleContainer>
+          </ArticleTitle>
         ),
         node: <NodeArticleTitle id="article-title" />,
         props: {},
@@ -127,7 +142,7 @@ export const componentsMap: Components[] = [
       {
         name: "BenefitBgSection",
         demo: (
-          <BenefitBgSectionContainer>
+          <BenefitBgSection>
             <Container
               className={cn(
                 "flex flex-row items-start gap-8 justify-center self-stretch"
@@ -154,7 +169,7 @@ export const componentsMap: Components[] = [
                 />
               </Container>
             </Container>
-          </BenefitBgSectionContainer>
+          </BenefitBgSection>
         ),
         node: <NodeBenefitBgSection id="benefit-bg-section" />,
         props: {},

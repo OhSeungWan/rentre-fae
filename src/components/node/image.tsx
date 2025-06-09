@@ -5,7 +5,7 @@ import { withNode } from "./connector";
 export const NodeImage = withNode(AutoHeightImage);
 
 (NodeImage as any).craft = {
-  displayName: "Image",
+  displayName: "AutoHeightImage",
   props: {
     src: "/hero.png",
   },

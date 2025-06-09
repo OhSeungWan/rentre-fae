@@ -23,17 +23,8 @@ import {
   NodeArticleTitleContainer,
   NodeArticleTitleDivider,
   NodeArticleTitleHeader,
-  NodeArticleTitleMain,
-  NodeArticleTitleSub,
-  NodeArticleTitleText,
 } from "@/components/node/article-title";
-import {
-  NodeBenefitBgSection,
-  NodeBenefitBgSectionContainer,
-  NodeBenefitBgSectionItem,
-  NodeBenefitBgSectionTitle,
-  NodeBgSectionContent,
-} from "@/components/node/bg-section";
+import { NodeBenefitBgSection } from "@/components/node/bg-section";
 import { NodeText } from "@/components/node/Text";
 import { NodeStoryList } from "@/components/node/story-list";
 import { NodeStoryItem } from "@/components/node/story-item";
@@ -69,14 +60,7 @@ export default function Index() {
           NodeArticleTitleContainer,
           NodeArticleTitleDivider,
           NodeArticleTitleHeader,
-          NodeArticleTitleMain,
-          NodeArticleTitleSub,
-          NodeArticleTitleText,
-          NodeBenefitBgSectionContainer,
-          NodeBenefitBgSectionItem,
-          NodeBenefitBgSection,
-          NodeBenefitBgSectionTitle,
-          NodeBgSectionContent,
+
           NodeText,
           NodeStoryList,
           NodeStoryItem,
@@ -86,6 +70,7 @@ export default function Index() {
           NodeImportantTitle,
           NodeImportantTitleText,
           NodeImportantTitleContainer,
+          NodeBenefitBgSection,
         }}
         onRender={RenderNode}
         handlers={(store) =>

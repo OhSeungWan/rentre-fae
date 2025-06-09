@@ -28,16 +28,10 @@ import {
   NodeArticleTitleContainer,
   NodeArticleTitleDivider,
   NodeArticleTitleHeader,
-  NodeArticleTitleMain,
-  NodeArticleTitleSub,
-  NodeArticleTitleText,
 } from "@/components/node/article-title";
 import {
   NodeBenefitBgSection,
   NodeBenefitBgSectionContainer,
-  NodeBenefitBgSectionItem,
-  NodeBenefitBgSectionTitle,
-  NodeBgSectionContent,
 } from "@/components/node/bg-section";
 import { NodeText } from "@/components/node/Text";
 import { NodeStoryList } from "@/components/node/story-list";
@@ -80,14 +74,11 @@ export default function EditApprovedPage({ slug, json }: Props) {
           NodeArticleTitleContainer,
           NodeArticleTitleDivider,
           NodeArticleTitleHeader,
-          NodeArticleTitleMain,
-          NodeArticleTitleSub,
-          NodeArticleTitleText,
+
           NodeBenefitBgSectionContainer,
-          NodeBenefitBgSectionItem,
+
           NodeBenefitBgSection,
-          NodeBenefitBgSectionTitle,
-          NodeBgSectionContent,
+
           NodeText,
           NodeStoryList,
           NodeStoryItem,

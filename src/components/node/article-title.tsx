@@ -3,11 +3,8 @@ import { Element } from "@craftjs/core";
 import { withNode } from "./connector";
 import { SettingsControl } from "../settings-control";
 import {
-  ArticleTitleContainer,
+  ArticleTitle,
   ArticleTitleHeader,
-  ArticleTitleMain,
-  ArticleTitleSub,
-  ArticleTitleText,
   ArticleTitleDivider,
 } from "../ui/article-title";
 import { NodeText } from "./Text";
@@ -17,7 +14,7 @@ const draggable = true;
 const droppable = true;
 
 // Node Components
-export const NodeArticleTitleContainer = withNode(ArticleTitleContainer, {
+export const NodeArticleTitleContainer = withNode(ArticleTitle, {
   draggable,
   droppable,
 });
@@ -29,37 +26,6 @@ export const NodeArticleTitleHeader = withNode(ArticleTitleHeader, {
   ...(NodeArticleTitleHeader as any).craft,
   custom: {
     importPath: "@/components/ui/article-title",
-  },
-};
-
-export const NodeArticleTitleMain = withNode(ArticleTitleMain, {
-  droppable,
-});
-(NodeArticleTitleMain as any).craft = {
-  ...(NodeArticleTitleMain as any).craft,
-  related: {
-    toolbar: SettingsControl,
-  },
-};
-
-export const NodeArticleTitleSub = withNode(ArticleTitleSub, {
-  droppable,
-});
-
-(NodeArticleTitleSub as any).craft = {
-  ...(NodeArticleTitleSub as any).craft,
-  related: {
-    toolbar: SettingsControl,
-  },
-};
-
-export const NodeArticleTitleText = withNode(ArticleTitleText, {
-  droppable,
-});
-(NodeArticleTitleText as any).craft = {
-  ...(NodeArticleTitleText as any).craft,
-  related: {
-    toolbar: SettingsControl,
   },
 };
 

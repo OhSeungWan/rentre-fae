@@ -1,17 +1,17 @@
 import { cn } from "@/lib/utils";
-import { ImportantTitleContainer } from "../ui/important-title";
+import { ImportantTitle } from "../ui/important-title";
 import { Text } from "../ui/text";
 import { withNode } from "./connector";
-import { NodeContainer } from "./container";
+
 import { NodeText } from "./Text";
 import { SettingsControl } from "../settings-control";
 
 export const NodeImportantTitleText = withNode(Text);
-export const NodeImportantTitleContainer = withNode(ImportantTitleContainer);
+export const NodeImportantTitleContainer = withNode(ImportantTitle);
 
 export const NodeImportantTitle = () => {
   return (
-    <NodeContainer
+    <NodeImportantTitleContainer
       className={cn(
         "flex gap-13 items-center w-full p-16 bg-white rounded-[12px] shadow-[4px_9px_30px_0px_rgba(0,0,0,0.09);]"
       )}
@@ -37,7 +37,7 @@ export const NodeImportantTitle = () => {
         className="w-full text-[#586177] text-16 font-bold leading-[24px]"
       />
       {/* <NodeImportantTitleText text="제목입력" /> */}
-    </NodeContainer>
+    </NodeImportantTitleContainer>
   );
 };
 

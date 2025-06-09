@@ -1,12 +1,7 @@
 import { withNode } from "@/components/node/connector";
 import { SettingsControl } from "@/components/settings-control";
 
-import {
-  BenefitBgSectionContainer,
-  BenefitBgSectionItem,
-  BenefitBgSectionTitle,
-  BgSectionContent,
-} from "../ui/bg-section";
+import { BenefitBgSection } from "../ui/bg-section";
 import { Element } from "@craftjs/core";
 import { NodeText } from "./Text";
 import { cn } from "@/lib/utils";
@@ -14,42 +9,16 @@ import { NodeContainer } from "./container";
 const draggable = true;
 const droppable = true;
 // Node Wrappers
-export const NodeBenefitBgSectionContainer = withNode(
-  BenefitBgSectionContainer,
-  { draggable, droppable }
-);
+export const NodeBenefitBgSectionContainer = withNode(BenefitBgSection, {
+  draggable,
+  droppable,
+});
 
 (NodeBenefitBgSectionContainer as any).craft = {
   ...(NodeBenefitBgSectionContainer as any).craft,
-  related: {
-    toolbar: SettingsControl,
+  custom: {
+    importPath: "@/components/ui/bg-section",
   },
-};
-
-export const NodeBenefitBgSectionTitle = withNode(BenefitBgSectionTitle, {
-  draggable,
-  // droppable,
-});
-
-(NodeBenefitBgSectionTitle as any).craft = {
-  ...(NodeBenefitBgSectionTitle as any).craft,
-  props: { number: 1, children: "제목입력" },
-  related: {
-    toolbar: SettingsControl,
-  },
-};
-
-export const NodeBgSectionContent = withNode(BgSectionContent, {
-  droppable,
-});
-
-export const NodeBenefitBgSectionItem = withNode(BenefitBgSectionItem, {
-  draggable,
-  droppable,
-});
-
-(NodeBenefitBgSectionItem as any).craft = {
-  ...(NodeBenefitBgSectionItem as any).craft,
   related: {
     toolbar: SettingsControl,
   },
@@ -59,7 +28,7 @@ export const NodeBenefitBgSection = (
   props: React.HTMLAttributes<HTMLDivElement>
 ) => {
   return (
-    <NodeBenefitBgSectionContainer {...props}>
+    <NodeBenefitBgSectionContainer>
       <Element
         canvas
         id="title-container"
@@ -101,7 +70,6 @@ export const NodeBenefitBgSection = (
 (NodeBenefitBgSection as any).craft = {
   ...(NodeBenefitBgSection as any).craft,
   displayName: "BenefitBgSection",
-  props: {},
   custom: {
     importPath: "@/components/ui/bg-section",
   },
