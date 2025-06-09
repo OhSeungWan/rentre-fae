@@ -119,6 +119,7 @@ export const SettingsControl = () => {
             event.stopPropagation();
             if (parent) {
               actions.delete(id);
+              actions.clearEvents();
             }
           }}
         >

@@ -5,10 +5,14 @@ export const ControlPanel = () => {
   const { active, related } = useEditor((state, query) => {
     // TODO: handle multiple selected elements
     const currentlySelectedNodeId = query.getEvent("selected").first();
+
+    const node = currentlySelectedNodeId
+      ? state.nodes[currentlySelectedNodeId]
+      : null;
+
     return {
-      active: currentlySelectedNodeId,
-      related:
-        currentlySelectedNodeId && state.nodes[currentlySelectedNodeId].related,
+      active: currentlySelectedNodeId && node ? currentlySelectedNodeId : null,
+      related: node ? node.related : null,
     };
   });
 
