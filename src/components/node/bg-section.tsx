@@ -24,9 +24,7 @@ export const NodeBenefitBgSectionContainer = withNode(BenefitBgSection, {
   },
 };
 
-export const NodeBenefitBgSection = (
-  props: React.HTMLAttributes<HTMLDivElement>
-) => {
+export const NodeBenefitBgSection = () => {
   return (
     <NodeBenefitBgSectionContainer>
       <Element

@@ -171,7 +171,7 @@ export const componentsMap: Components[] = [
             </Container>
           </BenefitBgSection>
         ),
-        node: <NodeBenefitBgSection id="benefit-bg-section" />,
+        node: <NodeBenefitBgSection />,
         props: {},
       },
       {
