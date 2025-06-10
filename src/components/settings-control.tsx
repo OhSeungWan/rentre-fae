@@ -22,12 +22,16 @@ export const SettingsControl = () => {
   const {
     id,
     nodeProps,
+    parent,
     deletable,
     actions: { setProp },
   } = useNode((node) => ({
     nodeProps: node.data.props,
     deletable: query.node(node.id).isDeletable(),
+    parent: node.data.parent,
   }));
+
+  if (!nodeProps) return null;
 
   const {
     className: classNames = "",
@@ -117,9 +121,8 @@ export const SettingsControl = () => {
           className="cursor-pointer mb-16 w-full"
           onClick={(event) => {
             event.stopPropagation();
-            if (parent) {
-              actions.delete(id);
-            }
+            actions.delete(id);
+            actions.selectNode(parent);
           }}
         >
           <Trash2 className="mr-8 h-16 w-16" />
