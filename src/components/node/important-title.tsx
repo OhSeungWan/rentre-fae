@@ -5,13 +5,13 @@ import { withNode } from "./connector";
 
 import { NodeText } from "./Text";
 import { SettingsControl } from "../settings-control";
+import { NodeContainer } from "./container";
 
 export const NodeImportantTitleText = withNode(Text);
-export const NodeImportantTitleContainer = withNode(ImportantTitle);
 
 export const NodeImportantTitle = () => {
   return (
-    <NodeImportantTitleContainer
+    <NodeContainer
       className={cn(
         "flex gap-13 items-center w-full p-16 bg-white rounded-[12px] shadow-[4px_9px_30px_0px_rgba(0,0,0,0.09);]"
       )}
@@ -37,7 +37,7 @@ export const NodeImportantTitle = () => {
         className="w-full text-[#586177] text-16 font-bold leading-[24px]"
       />
       {/* <NodeImportantTitleText text="제목입력" /> */}
-    </NodeImportantTitleContainer>
+    </NodeContainer>
   );
 };
 

@@ -36,7 +36,6 @@ import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
 
 import {
   NodeImportantTitle,
-  NodeImportantTitleContainer,
   NodeImportantTitleText,
 } from "@/components/node/important-title";
 
@@ -69,7 +68,7 @@ export default function Index() {
           NodeImage,
           NodeImportantTitle,
           NodeImportantTitleText,
-          NodeImportantTitleContainer,
+
           NodeBenefitBgSection,
         }}
         onRender={RenderNode}

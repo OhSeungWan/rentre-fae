@@ -41,7 +41,6 @@ import { NodeContainer } from "@/components/node/container";
 import { NodeImage } from "@/components/node/image";
 import {
   NodeImportantTitle,
-  NodeImportantTitleContainer,
   NodeImportantTitleText,
 } from "@/components/node/important-title";
 import { CopyPasteHelper } from "@/hooks/CopyPasteHelper";
@@ -87,7 +86,6 @@ export default function EditApprovedPage({ slug, json }: Props) {
           NodeImage,
           NodeImportantTitle,
           NodeImportantTitleText,
-          NodeImportantTitleContainer,
         }}
         onRender={RenderNode}
         handlers={(store) =>
