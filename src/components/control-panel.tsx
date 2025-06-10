@@ -4,11 +4,11 @@ import React from "react";
 export const ControlPanel = () => {
   const { active, related } = useEditor((state, query) => {
     // TODO: handle multiple selected elements
-    const currentlySelectedNodeId = query.getEvent("selected").first();
+    const selectedId = query.getEvent("selected").first();
+    const node = selectedId && state.nodes[selectedId];
     return {
-      active: currentlySelectedNodeId,
-      related:
-        currentlySelectedNodeId && state.nodes[currentlySelectedNodeId].related,
+      active: selectedId,
+      related: node?.related,
     };
   });
 
