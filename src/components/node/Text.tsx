@@ -43,6 +43,28 @@ export const NodeText = ({
     }
   }, [connect, drag]);
 
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault(); // 기본 HTML 붙여넣기 방지
+    const plainText = e.clipboardData.getData("text/plain");
+
+    setProp((props) => {
+      props.text = plainText;
+    }, 500);
+    setLocalText(plainText);
+  };
+
+  //   useEffect(() => {
+  //   if (isActive) {
+  //     editor.actions.select().clear();
+  //     editor.actions.select().add(id); // Craft.js 편집 상태
+  //     editor.actions.setEvent("editingTextId", id); // 추가! 편집 중 표시
+  //   } else {
+  //     const editingId = editor.query.getEvent("editingTextId");
+  //     if (editingId === id) {
+  //       editor.actions.setEvent("editingTextId", null); // 편집 종료
+  //     }
+  //   }
+  // }, [isActive, id, editor.actions, editor.query]);
   return (
     <ContentEditable
       innerRef={contentRef}
@@ -54,6 +76,7 @@ export const NodeText = ({
           setLocalText(e.target.value);
         }, 500);
       }} // use true to disable editing
+      onPaste={handlePaste}
       tagName={tagName} // Use a custom HTML tag (uses a div by default)
       {...props}
     />
