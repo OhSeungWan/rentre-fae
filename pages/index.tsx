@@ -38,6 +38,7 @@ import {
   NodeImportantTitle,
   NodeImportantTitleText,
 } from "@/components/node/important-title";
+import { cn } from "@/lib/utils";
 
 export default function Index() {
   return (
@@ -92,6 +93,68 @@ export default function Index() {
                   <NodeImage src="/hero.png" alt="hero"></NodeImage>
                   <NodeArticleTitle></NodeArticleTitle>
                   <NodeBenefitBgSection></NodeBenefitBgSection>
+                  <NodeContainer
+                    className={cn(
+                      "flex flex-col gap-8 px-48 py-48 bg-[#F9FAFB] w-full items-center"
+                    )}
+                  >
+                    <NodeText
+                      text="제목"
+                      className="text-[22px] font-bold leading-[30px] text-[#2c2c2c]"
+                      tagName="h3"
+                    />
+                    <NodeContainer
+                      className={cn(
+                        "flex gap-13 items-center w-full p-16 bg-white rounded-[12px] shadow-[4px_9px_30px_0px_rgba(0,0,0,0.09);]"
+                      )}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="21"
+                        height="20"
+                        viewBox="0 0 21 20"
+                        fill="none"
+                      >
+                        <circle cx="10.5742" cy="10" r="10" fill="#3531FF" />
+                        <path
+                          d="M6.69922 9.75L9.3078 12.3586C9.3859 12.4367 9.51254 12.4367 9.59064 12.3586L14.4492 7.5"
+                          stroke="white"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                      <NodeText
+                        text="제목입력"
+                        className="w-full text-[#586177] text-16 font-bold leading-[24px]"
+                      />
+                    </NodeContainer>
+                    <NodeContainer
+                      className={cn(
+                        "flex gap-13 items-center w-full p-16 bg-white rounded-[12px] shadow-[4px_9px_30px_0px_rgba(0,0,0,0.09);]"
+                      )}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="21"
+                        height="20"
+                        viewBox="0 0 21 20"
+                        fill="none"
+                      >
+                        <circle cx="10.5742" cy="10" r="10" fill="#3531FF" />
+                        <path
+                          d="M6.69922 9.75L9.3078 12.3586C9.3859 12.4367 9.51254 12.4367 9.59064 12.3586L14.4492 7.5"
+                          stroke="white"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                      <NodeText
+                        text="제목입력"
+                        className="w-full text-[#586177] text-16 font-bold leading-[24px]"
+                      />
+                    </NodeContainer>
+                  </NodeContainer>
+                  <NodeTwoBlocks />
                 </Element>
               </Frame>
             </ReactIframe>

@@ -185,7 +185,7 @@ export const componentsMap: Components[] = [
         node: <NodeImage src="/hero.png" alt="sample" />,
       },
       {
-        name: "BenefitBgSection",
+        name: "importantTitle",
         demo: (
           <Container
             className={cn(

@@ -1,4 +1,4 @@
-import { CopyBlock, dracula } from 'react-code-blocks';
+import { CopyBlock, dracula } from "react-code-blocks";
 import { Button } from "./ui/button";
 import { useEditor } from "@craftjs/core";
 import { useRouter } from "next/router";
@@ -33,7 +33,10 @@ export const CodeView = ({ codeString }: { codeString?: string }) => {
 
   const publish = async () => {
     const slugFromQuery = router.query.slug;
-    const slug = typeof slugFromQuery === "string" ? slugFromQuery : prompt("slug?") || undefined;
+    const slug =
+      typeof slugFromQuery === "string"
+        ? slugFromQuery
+        : prompt("slug?") || undefined;
 
     if (!slug) {
       alert("Slug is required to publish");
@@ -61,10 +64,14 @@ export const CodeView = ({ codeString }: { codeString?: string }) => {
   return (
     <div className="rounded-md h-full border border-input flex flex-col">
       <div className="p-2 border-b flex gap-2">
-        <Button size="sm" onClick={downloadFile}>Download .tsx</Button>
-        <Button size="sm" variant="secondary" onClick={publish}>Publish</Button>
+        <Button size="sm" onClick={downloadFile}>
+          Download .tsx
+        </Button>
+        <Button size="sm" variant="secondary" onClick={publish}>
+          Publish
+        </Button>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 overflow-scroll">
         <CopyBlock
           customStyle={{ height: "100%", overflow: "scroll" }}
           text={code}
